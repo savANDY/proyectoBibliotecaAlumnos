@@ -37,33 +37,11 @@ public class ModeloSocio extends Conectar {
 
 	}
 
-	public void insertar(Socio socio) throws Exception {
-		// escribir la instruccion INSERT
+	public void insertar(Socio socio) {
+
+		PreparedStatement pst;
 		try {
-			System.out.println("\n\t\tDatos Socio");
-			System.out.println("\t\tId: ");
-			socio.setId(Integer.parseInt(scan.nextLine()));
-
-			System.out.println("\t\tNombre: ");
-			socio.setNombre(scan.nextLine());
-
-			System.out.println("\t\tApellido: ");
-			socio.setApellido(scan.nextLine());
-
-			System.out.println("\t\tDireccion: ");
-			socio.setDireccion(scan.nextLine());
-
-			System.out.println("\t\tPoblacion: ");
-			socio.setPoblacion(scan.nextLine());
-
-			System.out.println("\t\tProvincia: ");
-			socio.setProvincia(scan.nextLine());
-
-			System.out.println("\t\tDni: ");
-			socio.setDni(scan.nextLine());
-
-			PreparedStatement pst = cn.prepareStatement("INSERT INTO SOCIOS VALUES (?,?,?,?,?,?,?)");
-
+			pst = cn.prepareStatement("INSERT INTO SOCIOS VALUES (?,?,?,?,?,?,?)");
 			pst.setInt(1, socio.getId());
 			pst.setString(2, socio.getNombre());
 			pst.setString(3, socio.getApellido());
@@ -72,12 +50,13 @@ public class ModeloSocio extends Conectar {
 			pst.setString(6, socio.getProvincia());
 			pst.setString(7, socio.getDni());
 
-			pst.execute();// ejecuta
+			pst.execute();
 			System.out.println("Alumno insertado correctamente");
-		} catch (SQLException ex) {
-			throw ex;
-
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	public void borrar(int id) throws Exception {

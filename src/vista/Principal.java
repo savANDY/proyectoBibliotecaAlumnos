@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorSocio;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +16,8 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
@@ -63,6 +68,11 @@ public class Principal extends JFrame {
 		contentPane.add(prestamos);
 		
 		JButton socios = new JButton("GESTION SOCIOS");
+		socios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new ControladorSocio().abrirGestionSocio();
+			}
+		});
 		socios.setBounds(40, 109, 168, 23);
 		contentPane.add(socios);
 		
