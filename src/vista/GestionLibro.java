@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class GestionLibro extends JDialog {
 
@@ -49,6 +52,13 @@ public class GestionLibro extends JDialog {
 			JButton consultas = new JButton("CONSULTAS LIBRO");
 			consultas.setBounds(49, 168, 189, 23);
 			contentPanel.add(consultas);
+		}
+		{
+			JLabel lblNewLabel = new JLabel("ALTA DE LIBRO");
+			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+			lblNewLabel.setBounds(94, 28, 275, 23);
+			contentPanel.add(lblNewLabel);
 		}
 	}
 
