@@ -83,5 +83,9 @@ public class NuevoLibro extends JDialog {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(83, 11, 300, 14);
 		contentPanel.add(lblNewLabel);
+		
+		JButton btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.setBounds(322, 173, 89, 23);
+		contentPanel.add(btnLimpiar);
 	}
 }
