@@ -7,9 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorLibro;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GestionLibro extends JDialog {
 
@@ -40,16 +45,34 @@ public class GestionLibro extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton nuevo = new JButton("NUEVO LIBRO");
+			nuevo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					(new ControladorLibro()).abrirNuevoLibro();
+				}
+			});
 			nuevo.setBounds(49, 77, 189, 23);
 			contentPanel.add(nuevo);
 		}
 		{
 			JButton borrar = new JButton("BORRARLIBRO");
+			borrar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					(new ControladorLibro()).abrirBorrarLibro();
+				}
+			});
 			borrar.setBounds(49, 123, 189, 23);
 			contentPanel.add(borrar);
 		}
 		{
 			JButton consultas = new JButton("CONSULTAS LIBRO");
+			consultas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+
+					(new ControladorLibro()).abrirConsultarLibro();
+				}
+			});
 			consultas.setBounds(49, 168, 189, 23);
 			contentPanel.add(consultas);
 		}
