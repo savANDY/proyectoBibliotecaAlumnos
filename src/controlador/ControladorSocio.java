@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.Socio;
 import modelo.ModeloSocio;
+import vista.FormularioDeBorrado;
 import vista.FormularioSocio;
 import vista.Principal;
 import vista.GestionSocio;
@@ -12,6 +13,7 @@ public class ControladorSocio {
 	private GestionSocio gestionSocio;
 	private Principal principal;
 	private FormularioSocio formularioSocio;
+	private FormularioDeBorrado formularioDeBorrado;
 
 	public ControladorSocio() {
 		modeloSocio = new ModeloSocio();
@@ -39,6 +41,10 @@ public class ControladorSocio {
 	}
 	public void abrirFormularioSocio() {
 		this.formularioSocio.setVisible(true);
+		
+	}
+	public void abrirFormDeBorrado() {
+		this.formularioDeBorrado = new FormularioDeBorrado(gestionSocio, true);
 		
 	}
 }
