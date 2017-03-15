@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.*;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,10 +16,15 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	private ControladorLibro controladorLibro;
+	private ControladorLibro controladorLibro;
+	private ControladorLibro controladorLibro;
 
 	/**
 	 * Launch the application.
@@ -67,6 +75,11 @@ public class Principal extends JFrame {
 		contentPane.add(socios);
 		
 		JButton libros = new JButton("GESTION LIBROS");
+		libros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		libros.setBounds(40, 48, 168, 23);
 		contentPane.add(libros);
 		
