@@ -8,48 +8,46 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorSocio;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class GestionSocio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			GestionSocio dialog = new GestionSocio();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
 	 */
-	public GestionSocio() {
+	public GestionSocio(Principal principal, boolean modal) {
+		super(principal, modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
-		{
-			JButton nuevo = new JButton("NUEVO SOCIO");
-			nuevo.setBounds(25, 59, 189, 23);
-			getContentPane().add(nuevo);
-		}
-		{
-			JButton borrar = new JButton("BORRAR SOCIO");
-			borrar.setBounds(35, 103, 189, 23);
-			getContentPane().add(borrar);
-		}
-		{
-			JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
-			consultas.setBounds(35, 161, 189, 23);
-			getContentPane().add(consultas);
-		}
 		contentPanel.setBounds(0, 0, 434, 261);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
+		{
+			JButton nuevo = new JButton("NUEVO SOCIO");
+			nuevo.setBounds(25, 71, 189, 23);
+			contentPanel.add(nuevo);
+			{
+				JButton borrar = new JButton("BORRAR SOCIO");
+				borrar.setBounds(25, 105, 189, 23);
+				contentPanel.add(borrar);
+			}
+			{
+				JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
+				consultas.setBounds(25, 139, 189, 23);
+				contentPanel.add(consultas);
+			}
+			nuevo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					new ControladorSocio().abrirFormularioSocio();
+				}
+			});
+		}
 	}
 
 }

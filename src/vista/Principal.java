@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controlador.*;
+import controlador.ControladorLibro;
+import controlador.ControladorPrestamo;
+import controlador.ControladorSocio;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -79,8 +81,9 @@ public class Principal extends JFrame {
 		JButton socios = new JButton("GESTION SOCIOS");
 		socios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//DUDA 
-				//(new ControladorSocio()).abrirGestionSocio();
+
+				new ControladorSocio().abrirGestionSocio();
+
 			}
 		});
 		socios.setBounds(40, 109, 168, 23);
