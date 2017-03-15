@@ -7,10 +7,16 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorLibro;
+import modelo.Libro;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NuevoLibro extends JDialog {
 
@@ -18,9 +24,10 @@ public class NuevoLibro extends JDialog {
 	private JTextField id;
 	private JTextField titulo;
 	private JTextField autor;
-	private JTextField numPag;
+	private JTextField num_pag;
 	private JButton guardar;
 	private JLabel lblNewLabel;
+	private ControladorLibro controladorLibro;
 
 
 
@@ -65,16 +72,24 @@ public class NuevoLibro extends JDialog {
 		lblAutor.setBounds(54, 177, 46, 14);
 		contentPanel.add(lblAutor);
 		
-		numPag = new JTextField();
-		numPag.setColumns(10);
-		numPag.setBounds(213, 230, 86, 20);
-		contentPanel.add(numPag);
+		num_pag = new JTextField();
+		num_pag.setColumns(10);
+		num_pag.setBounds(213, 230, 86, 20);
+		contentPanel.add(num_pag);
 		
 		JLabel lblNumDePaginas = new JLabel("Num  de Paginas");
 		lblNumDePaginas.setBounds(54, 232, 90, 14);
 		contentPanel.add(lblNumDePaginas);
 		
 		guardar = new JButton("GUARDAR");
+		guardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				controladorLibro=new ControladorLibro();
+				controladorLibro.insertarLibro(titulo.getText(), autor.getText(), Integer.parseInt(num_pag.getText()));
+				
+			}
+		});
 		guardar.setBounds(322, 123, 89, 23);
 		contentPanel.add(guardar);
 		

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorLibro;
+import controlador.ControladorPrestamo;
 import controlador.ControladorSocio;
 
 import javax.swing.JLabel;
@@ -22,6 +24,9 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	private ControladorLibro controladorLibro;
+	private ControladorSocio controladorSocio;
+	private ControladorPrestamo controladorPrestamo;
 
 	/**
 	 * Launch the application.
@@ -64,19 +69,34 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton prestamos = new JButton("PRESTAMOS");
+		prestamos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//DUDA 
+				//(new ControladorPrestamo()).abrirGestionPrestamo();
+			}
+		});
 		prestamos.setBounds(40, 190, 168, 23);
 		contentPane.add(prestamos);
 		
 		JButton socios = new JButton("GESTION SOCIOS");
 		socios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				new ControladorSocio().abrirGestionSocio();
+
 			}
 		});
 		socios.setBounds(40, 109, 168, 23);
 		contentPane.add(socios);
 		
 		JButton libros = new JButton("GESTION LIBROS");
+		libros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//DUDA 
+				(new ControladorLibro()).abrirGestionLibro();
+				
+			}
+		});
 		libros.setBounds(40, 48, 168, 23);
 		contentPane.add(libros);
 		
