@@ -57,4 +57,51 @@ public class ControladorSocio {
 		this.formularioDeBorrado.rellenarComboSocios(socios);
 		this.formularioDeBorrado.setVisible(true);
 	}
+
+	public ModeloSocio getModeloSocio() {
+		return modeloSocio;
+	}
+
+	public void setModeloSocio(ModeloSocio modeloSocio) {
+		this.modeloSocio = modeloSocio;
+	}
+
+	public GestionSocio getGestionSocio() {
+		return gestionSocio;
+	}
+
+	public void setGestionSocio(GestionSocio gestionSocio) {
+		this.gestionSocio = gestionSocio;
+	}
+
+	public Principal getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(Principal principal) {
+		this.principal = principal;
+	}
+
+	public FormularioSocio getFormularioSocio() {
+		return formularioSocio;
+	}
+
+	public void setFormularioSocio(FormularioSocio formularioSocio) {
+		this.formularioSocio = formularioSocio;
+	}
+
+	public FormularioDeBorrado getFormularioDeBorrado() {
+		return formularioDeBorrado;
+	}
+
+	public void setFormularioDeBorrado(FormularioDeBorrado formularioDeBorrado) {
+		this.formularioDeBorrado = formularioDeBorrado;
+	}
+
+	public void cerrarFormularioSocio() {
+		this.formularioSocio.dispose();
+		
+	}
+	
+
 }
