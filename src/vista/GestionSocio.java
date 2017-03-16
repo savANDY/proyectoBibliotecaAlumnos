@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 public class GestionSocio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+<<<<<<< HEAD
 	
 	private ControladorSocio  controladorSocio;
 
@@ -30,7 +31,6 @@ public class GestionSocio extends JDialog {
 	public void setControladorSocio(ControladorSocio controladorSocio) {
 		this.controladorSocio = controladorSocio;
 	}
-
 
 
 	/**
@@ -52,7 +52,7 @@ public class GestionSocio extends JDialog {
 				JButton borrar = new JButton("BORRAR SOCIO");
 				borrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						new ControladorSocio().abrirFormDeBorrado();
+						controladorSocio.abrirFormDeBorrado();
 					}
 				});
 				borrar.setBounds(25, 105, 189, 23);
@@ -60,15 +60,22 @@ public class GestionSocio extends JDialog {
 			}
 			{
 				JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
+				consultas.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						//TODO hau erabakitzeko zer saturko den heman
+						
+					}
+				});
 				consultas.setBounds(25, 139, 189, 23);
 				contentPanel.add(consultas);
 			}
 			nuevo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					new ControladorSocio().abrirFormularioSocio();
+					controladorSocio.abrirFormularioSocio();
 				}
 			});
 		}
 	}
+
 
 }

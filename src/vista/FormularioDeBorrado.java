@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorSocio;
 import modelo.Socio;
 
 import javax.swing.GroupLayout;
@@ -30,6 +31,8 @@ public class FormularioDeBorrado extends JDialog {
 	private JTextField poblacion;
 	private JTextField provincia;
 	private JComboBox comboBoxSocios;
+	
+	private ControladorSocio controladorSocio;
 
 	/**
 	 * Create the dialog.
@@ -172,4 +175,14 @@ public class FormularioDeBorrado extends JDialog {
 		
 
 	}
+
+	public ControladorSocio getControladorSocio() {
+		return controladorSocio;
+	}
+
+	public void setControladorSocio(ControladorSocio controladorSocio) {
+		this.controladorSocio = controladorSocio;
+	}
+	
+	
 }

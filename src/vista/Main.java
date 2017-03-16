@@ -50,24 +50,24 @@ public class Main {
 		// SOCIO
 		// Crear ventanas como variables locales del main
 		
+
+		//creacion de ventanas de la gestion de socios y asignar controladores
 		GestionSocio gestionSocio = new GestionSocio(principal, true);
 		gestionSocio.setControladorSocio(controladorSocio);
-
-		NuevoSocio nuevoSocio = new NuevoSocio(gestionSocio, true);
-		nuevoSocio.setControladorSocio(controladorSocio);
-
-		BorrarSocio borrarSocio = new BorrarSocio(gestionSocio, true);
-
-		ConsultarSocio consultarSocio = new ConsultarSocio(gestionSocio, true);
-
-		ListarSocios listarSocios = new ListarSocios(gestionSocio, true);
-
-		controladorSocio.setNuevoSocio(nuevoSocio);
-		controladorSocio.setBorrarSocio(borrarSocio);
-		controladorSocio.setConsultarSocio(consultarSocio);
-		controladorSocio.setGestionSocio(gestionSocio);
-		controladorSocio.setListarSocios(listarSocios);
+		
+		FormularioDeBorrado formularioDeBorrado = new FormularioDeBorrado(gestionSocio, true);
+		formularioDeBorrado.setControladorSocio(controladorSocio);
+		
+		FormularioSocio formularioSocio = new FormularioSocio(gestionSocio, true);
+		formularioSocio.setControladorSocio(controladorSocio);
+		
+		//rellenar controladorSocio
 		controladorSocio.setModeloSocio(modeloSocio);
+		controladorSocio.setGestionSocio(gestionSocio);
+		controladorSocio.setFormularioDeBorrado(formularioDeBorrado);
+		controladorSocio.setFormularioSocio(formularioSocio);
+		
+		//abrir la ventana principal
 
 		principal.setVisible(true);
 

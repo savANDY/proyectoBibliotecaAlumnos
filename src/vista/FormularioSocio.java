@@ -84,21 +84,22 @@ public class FormularioSocio extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controladorSocio = new ControladorSocio();
 
-				controladorSocio.insertarSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(),
-						textPoblacion.getText(), textProvincia.getText(), textDni.getText());
+				
+				controladorSocio.insertarSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
+				
+				//((SocioVentana) getParent()).addSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
+				controladorSocio.cerrarFormularioSocio();
 
-				// ((SocioVentana) getParent()).addSocio(textNombre.getText(),
-				// textApellido.getText(), textDireccion.getText(),
-				// textPoblacion.getText(), textProvincia.getText(),
-				// textDni.getText());
-
-				dispose();
 			}
 		});
 
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controladorSocio.cerrarFormularioSocio();
+			}
+		});
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup().addGroup(gl_contentPanel
@@ -152,5 +153,7 @@ public class FormularioSocio extends JDialog {
 				.addContainerGap(49, Short.MAX_VALUE)));
 		contentPanel.setLayout(gl_contentPanel);
 	}
+
+
 
 }
