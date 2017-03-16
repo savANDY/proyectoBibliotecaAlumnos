@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorSocio;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -19,23 +22,29 @@ public class BorrarLibro extends JDialog {
 	private JTextField textField_2;
 	private JTextField textField_3;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			BorrarLibro dialog = new BorrarLibro();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private ControladorSocio controladorSocio;
+
+	
+	
+	public ControladorSocio getControladorSocio() {
+		return controladorSocio;
 	}
+
+
+
+	public void setControladorSocio(ControladorSocio controladorSocio) {
+		this.controladorSocio = controladorSocio;
+	}
+
+
 
 	/**
 	 * Create the dialog.
 	 */
-	public BorrarLibro() {
+	public BorrarLibro(JDialog parent, Boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);

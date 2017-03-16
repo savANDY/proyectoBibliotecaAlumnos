@@ -8,27 +8,26 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorSocio;
+
 public class ConsultarLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			ConsultarLibro dialog = new ConsultarLibro();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private ControladorSocio controladorSocio;
+	
+	public ControladorSocio getControladorSocio() {
+		return controladorSocio;
 	}
 
-	/**
-	 * Create the dialog.
-	 */
-	public ConsultarLibro() {
+	public void setControladorSocio(ControladorSocio controladorSocio) {
+		this.controladorSocio = controladorSocio;
+	}
+
+	public ConsultarLibro(JDialog parent, Boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

@@ -24,29 +24,42 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	
 	private ControladorLibro controladorLibro;
 	private ControladorSocio controladorSocio;
 	private ControladorPrestamo controladorPrestamo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
+	}
+
+
+	public ControladorLibro getControladorLibro() {
+		return controladorLibro;
+	}
+
+
+	public void setControladorLibro(ControladorLibro controladorLibro) {
+		this.controladorLibro = controladorLibro;
+	}
+
+
+	public ControladorSocio getControladorSocio() {
+		return controladorSocio;
+	}
+
+
+	public void setControladorSocio(ControladorSocio controladorSocio) {
+		this.controladorSocio = controladorSocio;
+	}
+
+
 	public Principal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/imagenes/book-2869_1280.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,8 +84,9 @@ public class Principal extends JFrame {
 		JButton prestamos = new JButton("PRESTAMOS");
 		prestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//DUDA 
-				//(new ControladorPrestamo()).abrirGestionPrestamo();
+				
+				//controladorPrestamo.abrirGestionPrestamo();
+
 			}
 		});
 		prestamos.setBounds(40, 190, 168, 23);
@@ -82,7 +96,7 @@ public class Principal extends JFrame {
 		socios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				new ControladorSocio().abrirGestionSocio();
+				controladorSocio.abrirGestionSocio();
 
 			}
 		});
@@ -92,8 +106,8 @@ public class Principal extends JFrame {
 		JButton libros = new JButton("GESTION LIBROS");
 		libros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//DUDA 
-				(new ControladorLibro()).abrirGestionLibro();
+				
+				controladorLibro.abrirGestionLibro();
 				
 			}
 		});
