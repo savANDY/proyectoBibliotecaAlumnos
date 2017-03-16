@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class GestionSocio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-<<<<<<< HEAD
+
 	
 	private ControladorSocio  controladorSocio;
 	private Component consultas;
@@ -64,20 +64,11 @@ public class GestionSocio extends JDialog {
 			}
 			{
 				JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
-				consultas.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						//TODO hau erabakitzeko zer saturko den heman
-						
-					}
-				});
+				
 				consultas.setBounds(25, 139, 189, 23);
 				contentPanel.add(consultas);
 			}
-			nuevo.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					controladorSocio.abrirFormularioSocio();
-				}
-			});
+			
 		}
 	}
 
