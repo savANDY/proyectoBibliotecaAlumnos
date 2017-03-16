@@ -11,29 +11,36 @@ public class ModeloSocio extends Conectar {
 		super();
 	}
 
-	public ArrayList<Socio> seleccionarTodos() throws Exception {
+	public ArrayList<Socio> seleccionarTodos() {
 
-		Statement st = cn.createStatement();
+		Statement st;
+		try {
+			st = cn.createStatement();
 
-		ResultSet rs = st.executeQuery("SELECT * FROM SOCIOS ");
+			ResultSet rs = st.executeQuery("SELECT * FROM SOCIOS ");
 
-		// pasar de ResultSet a ArrayList
+			// pasar de ResultSet a ArrayList
 
-		ArrayList<Socio> socios = new ArrayList<Socio>();
+			ArrayList<Socio> socios = new ArrayList<Socio>();
 
-		while (rs.next()) {
+			while (rs.next()) {
 
-			Socio socio = new Socio();
-			socio.setId(rs.getInt(1));
-			socio.setNombre(rs.getString(2));
-			socio.setApellido(rs.getString(3));
-			socio.setDireccion(rs.getString(4));
-			socio.setPoblacion(rs.getString(5));
-			socio.setProvincia(rs.getString(6));
-			socio.setDni(rs.getString(7));
-			socios.add(socio);
+				Socio socio = new Socio();
+				socio.setId(rs.getInt(1));
+				socio.setNombre(rs.getString(2));
+				socio.setApellido(rs.getString(3));
+				socio.setDireccion(rs.getString(4));
+				socio.setPoblacion(rs.getString(5));
+				socio.setProvincia(rs.getString(6));
+				socio.setDni(rs.getString(7));
+				socios.add(socio);
+			}
+			return socios;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return socios;
+		return null;
 
 	}
 

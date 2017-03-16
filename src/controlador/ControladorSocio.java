@@ -1,7 +1,11 @@
 package controlador;
 
 import modelo.Socio;
+
+import java.util.ArrayList;
+
 import modelo.ModeloSocio;
+import vista.FormularioDeBorrado;
 import vista.FormularioSocio;
 import vista.Principal;
 import vista.GestionSocio;
@@ -12,6 +16,7 @@ public class ControladorSocio {
 	private GestionSocio gestionSocio;
 	private Principal principal;
 	private FormularioSocio formularioSocio;
+	private FormularioDeBorrado formularioDeBorrado;
 
 	public ControladorSocio() {
 		modeloSocio = new ModeloSocio();
@@ -33,12 +38,22 @@ public class ControladorSocio {
 
 		this.modeloSocio.insertar(socio);
 	}
+	
 	public void abrirGestionSocio() {
 		this.gestionSocio.setVisible(true);
 		
 	}
+	
 	public void abrirFormularioSocio() {
 		this.formularioSocio.setVisible(true);
 		
+	}
+	
+	public void abrirFormDeBorrado() {
+		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
+		
+		this.formularioDeBorrado = new FormularioDeBorrado(gestionSocio, true);
+		this.formularioDeBorrado.rellenarComboSocios(socios);
+		this.formularioDeBorrado.setVisible(true);
 	}
 }
