@@ -18,7 +18,6 @@ import java.awt.event.ActionEvent;
 public class GestionSocio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-<<<<<<< HEAD
 	
 	private ControladorSocio  controladorSocio;
 	private Component consultas;
