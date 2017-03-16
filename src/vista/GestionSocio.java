@@ -16,6 +16,22 @@ import java.awt.event.ActionEvent;
 public class GestionSocio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	
+	private ControladorSocio  controladorSocio;
+
+	
+	
+	public ControladorSocio getControladorSocio() {
+		return controladorSocio;
+	}
+
+
+
+	public void setControladorSocio(ControladorSocio controladorSocio) {
+		this.controladorSocio = controladorSocio;
+	}
+
+
 
 	/**
 	 * Create the dialog.

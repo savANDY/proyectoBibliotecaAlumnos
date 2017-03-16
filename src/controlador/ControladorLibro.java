@@ -17,10 +17,7 @@ public class ControladorLibro {
 	private BorrarLibro borrarLibro;
 	private ConsultarLibro consultarLibro;
 	private ListarLibros  listarLibros;
-	
-	
-	
-	
+
 	private ModeloLibro modeloLibro;
 
 	public ControladorLibro() {

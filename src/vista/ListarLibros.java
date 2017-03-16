@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controlador.ControladorLibro;
 import controlador.ControladorSocio;
 
 public class ListarLibros extends JDialog {
@@ -16,7 +17,7 @@ public class ListarLibros extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTable libros;
 
-	private ControladorSocio controladorSocio;
+	private ControladorLibro controladorLibro;
 
 	/**
 	 * Create the dialog.

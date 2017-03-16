@@ -6,6 +6,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class ModeloLibro extends Conectar {
+	
+	
+	
+	
 	Scanner scan = new Scanner(System.in);
 
 	public ModeloLibro() {

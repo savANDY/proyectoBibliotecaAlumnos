@@ -12,22 +12,53 @@ import vista.GestionSocio;
 
 public class ControladorSocio {
 	
+	//un atributo por cada ventana de Socio
+	//un atributo para el modelo Socio
+	
 	private ModeloSocio modeloSocio;
+	
 	private GestionSocio gestionSocio;
 	private Principal principal;
 	private FormularioSocio formularioSocio;
 	private FormularioDeBorrado formularioDeBorrado;
 
+	public ModeloSocio getModeloSocio() {
+		return modeloSocio;
+	}
+	public void setModeloSocio(ModeloSocio modeloSocio) {
+		this.modeloSocio = modeloSocio;
+	}
+	public GestionSocio getGestionSocio() {
+		return gestionSocio;
+	}
+	public void setGestionSocio(GestionSocio gestionSocio) {
+		this.gestionSocio = gestionSocio;
+	}
+	public Principal getPrincipal() {
+		return principal;
+	}
+	public void setPrincipal(Principal principal) {
+		this.principal = principal;
+	}
+	public FormularioSocio getFormularioSocio() {
+		return formularioSocio;
+	}
+	public void setFormularioSocio(FormularioSocio formularioSocio) {
+		this.formularioSocio = formularioSocio;
+	}
+	public FormularioDeBorrado getFormularioDeBorrado() {
+		return formularioDeBorrado;
+	}
+	public void setFormularioDeBorrado(FormularioDeBorrado formularioDeBorrado) {
+		this.formularioDeBorrado = formularioDeBorrado;
+	}
 	public ControladorSocio() {
-		modeloSocio = new ModeloSocio();
-		this.principal = new Principal();
-		this.gestionSocio = new GestionSocio(principal, true);
-		this.formularioSocio = new FormularioSocio(gestionSocio, true);
+
 	}
 	public void insertarSocio(String nombre, String apellido, String direccion, String poblacion, String provincia,
 			String dni) {
 
-		// TODO para Borja Porque crear socio aqui y no en Vista
+		
 		Socio socio = new Socio();
 		socio.setNombre(nombre);
 		socio.setApellido(apellido);
@@ -56,4 +87,6 @@ public class ControladorSocio {
 		this.formularioDeBorrado.rellenarComboSocios(socios);
 		this.formularioDeBorrado.setVisible(true);
 	}
+	
+	
 }
