@@ -23,25 +23,13 @@ public class ModeloLibro extends Conectar {
 		// escribir la instruccion INSERT
 		try {
 
-			System.out.println("\n\t\tDatos Libro");
-			System.out.println("\t\tId: ");
-			libro.setId(Integer.parseInt(scan.nextLine()));
-
-			System.out.println("\t\tTitulo: ");
-			libro.setTitulo(scan.nextLine());
-
-			System.out.println("\t\tAutor: ");
-			libro.setAutor(scan.nextLine());
-
-			System.out.println("\t\tNumero paginas: ");
-			libro.setNum_pag(Integer.parseInt(scan.nextLine()));
-
-			PreparedStatement pst = cn.prepareStatement("INSERT INTO LIBROS VALUES (?,?,?,?)");
-
-			pst.setInt(1, libro.getId());
-			pst.setString(2, libro.getTitulo());
-			pst.setString(3, libro.getAutor());
-			pst.setInt(4, libro.getNum_pag());
+			PreparedStatement pst = cn.prepareStatement("INSERT INTO LIBROS (titulo, autor, num_pag) VALUES (?,?,?)");
+			
+			System.out.println(pst);
+			
+			pst.setString(1, libro.getTitulo());
+			pst.setString(2, libro.getAutor());
+			pst.setInt(3, libro.getNum_pag());
 
 			pst.execute();// ejecuta
 			System.out.println("Libro insertado correctamente");

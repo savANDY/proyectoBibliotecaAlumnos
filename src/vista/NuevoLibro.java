@@ -21,64 +21,59 @@ import java.awt.event.ActionEvent;
 public class NuevoLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField id;
 	private JTextField titulo;
 	private JTextField autor;
 	private JTextField num_pag;
 	private JButton guardar;
 	private JLabel lblNewLabel;
+	
 	private ControladorLibro controladorLibro;
 
-
-
+	public void setControladorLibro(ControladorLibro controladorLibro) {
+		this.controladorLibro = controladorLibro;
+	}
+	public ControladorLibro getControladorLibro() {
+		return controladorLibro;
+	}
 	/**
 	 * Create the dialog.
 	 */
-	public NuevoLibro() {
+	public NuevoLibro(JDialog parent,Boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
-		{
-			id = new JTextField();
-			id.setEditable(false);
-			id.setBounds(213, 62, 86, 20);
-			contentPanel.add(id);
-			id.setColumns(10);
-		}
-		{
-			JLabel lblIdLibro = new JLabel("Id Libro");
-			lblIdLibro.setBounds(54, 67, 46, 14);
-			contentPanel.add(lblIdLibro);
-		}
 		
 		titulo = new JTextField();
 		titulo.setColumns(10);
-		titulo.setBounds(213, 118, 86, 20);
+		titulo.setBounds(193, 74, 86, 20);
 		contentPanel.add(titulo);
 		
 		JLabel lblTitulo = new JLabel("Titulo");
-		lblTitulo.setBounds(54, 122, 46, 14);
+		lblTitulo.setBounds(34, 78, 46, 14);
 		contentPanel.add(lblTitulo);
 		
 		autor = new JTextField();
 		autor.setColumns(10);
-		autor.setBounds(213, 174, 86, 20);
+		autor.setBounds(193, 130, 86, 20);
 		contentPanel.add(autor);
 		
 		JLabel lblAutor = new JLabel("Autor");
-		lblAutor.setBounds(54, 177, 46, 14);
+		lblAutor.setBounds(34, 133, 46, 14);
 		contentPanel.add(lblAutor);
 		
 		num_pag = new JTextField();
 		num_pag.setColumns(10);
-		num_pag.setBounds(213, 230, 86, 20);
+		num_pag.setBounds(193, 186, 86, 20);
 		contentPanel.add(num_pag);
 		
 		JLabel lblNumDePaginas = new JLabel("Num  de Paginas");
-		lblNumDePaginas.setBounds(54, 232, 90, 14);
+		lblNumDePaginas.setBounds(34, 188, 90, 14);
 		contentPanel.add(lblNumDePaginas);
 		
 		guardar = new JButton("GUARDAR");

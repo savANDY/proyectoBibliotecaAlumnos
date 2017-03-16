@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -19,24 +20,24 @@ import java.awt.event.ActionEvent;
 public class GestionLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	
+	private ControladorLibro controladorLibro;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			GestionLibro dialog = new GestionLibro();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public ControladorLibro getControladorLibro() {
+		return controladorLibro;
+	}
+
+	public void setControladorLibro(ControladorLibro controladorLibro) {
+		this.controladorLibro = controladorLibro;
 	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro() {
+	public GestionLibro(JFrame parent, Boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
@@ -48,7 +49,7 @@ public class GestionLibro extends JDialog {
 			nuevo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					(new ControladorLibro()).abrirNuevoLibro();
+					controladorLibro.abrirNuevoLibro();
 				}
 			});
 			nuevo.setBounds(49, 77, 189, 23);
@@ -59,7 +60,7 @@ public class GestionLibro extends JDialog {
 			borrar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 
-					(new ControladorLibro()).abrirBorrarLibro();
+					controladorLibro.abrirBorrarLibro();
 				}
 			});
 			borrar.setBounds(49, 123, 189, 23);
@@ -70,7 +71,7 @@ public class GestionLibro extends JDialog {
 			consultas.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 
-					(new ControladorLibro()).abrirConsultarLibro();
+					controladorLibro.abrirConsultarLibro();
 				}
 			});
 			consultas.setBounds(49, 168, 189, 23);
@@ -83,6 +84,15 @@ public class GestionLibro extends JDialog {
 			lblNewLabel.setBounds(94, 28, 275, 23);
 			contentPanel.add(lblNewLabel);
 		}
+		
+		JButton listar = new JButton("LISTAR LIBROS");
+		listar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controladorLibro.abrirListarLibros();
+			}
+		});
+		listar.setBounds(49, 214, 189, 23);
+		contentPanel.add(listar);
 	}
-
 }
