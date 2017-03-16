@@ -1,8 +1,10 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -19,6 +21,8 @@ public class GestionSocio extends JDialog {
 <<<<<<< HEAD
 	
 	private ControladorSocio  controladorSocio;
+	private Component consultas;
+	private AbstractButton nuevo;
 
 	
 	
