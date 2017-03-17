@@ -38,7 +38,7 @@ public class NuevoLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public NuevoLibro(JDialog parent,Boolean modal) {
+	public NuevoLibro(JDialog parent,boolean modal) {
 		
 		super(parent,modal);
 		

@@ -34,7 +34,7 @@ public class GestionLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro(JFrame parent, Boolean modal) {
+	public GestionLibro(JFrame parent, boolean modal) {
 		
 		super(parent,modal);
 		

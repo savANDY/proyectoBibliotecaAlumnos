@@ -22,7 +22,7 @@ public class ListarLibros extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarLibros(JDialog parent, Boolean modal) {
+	public ListarLibros(JDialog parent, boolean modal) {
 		
 		super(parent,modal);
 		

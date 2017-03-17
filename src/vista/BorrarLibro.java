@@ -41,7 +41,7 @@ public class BorrarLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public BorrarLibro(JDialog parent, Boolean modal) {
+	public BorrarLibro(JDialog parent, boolean modal) {
 		
 		super(parent,modal);
 		
