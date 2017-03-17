@@ -6,6 +6,7 @@ import controlador.ControladorSocio;
 import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
+import vista.socio.FormularioDeBorrado;
 
 public class Main {
 

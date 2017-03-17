@@ -5,9 +5,9 @@ import modelo.Socio;
 import java.util.ArrayList;
 
 import modelo.ModeloSocio;
-import vista.FormularioDeBorrado;
 import vista.FormularioSocio;
 import vista.Principal;
+import vista.socio.FormularioDeBorrado;
 import vista.GestionSocio;
 
 public class ControladorSocio {
@@ -59,12 +59,30 @@ public class ControladorSocio {
 		this.formularioSocio.setVisible(true);
 	}
 
+	//borrado de socio 
 	public void abrirFormDeBorrado() {
 		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
 
 		this.formularioDeBorrado.rellenarComboSocios(socios);
 		this.formularioDeBorrado.setVisible(true);
 	}
+	
+	public void rellenarFormDeBorrado(int idSocio) {
+		Socio socio = this.modeloSocio.select(idSocio);
+		this.formularioDeBorrado.rellenarFormulario(socio);
+	}
+
+	public void eliminarSocio(int idSocio) {
+			this.modeloSocio.borrar(idSocio);
+			this.formularioDeBorrado.mostrarMensaje("socio borrado");
+	}
+
+	public void cerrarFormularioDeBorrado() {
+		this.formularioDeBorrado.clear();
+		this.formularioDeBorrado.dispose();
+	}
+	//borrado de socio FIN
+	
 
 
 	public ModeloSocio getModeloSocio() {
@@ -111,5 +129,5 @@ public class ControladorSocio {
 		this.formularioSocio.dispose();
 		
 	}
-	
+
 }

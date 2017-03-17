@@ -66,25 +66,17 @@ public class ModeloSocio extends Conectar {
 
 	}
 
-	public void borrar(int id) throws Exception {
-		try {
-			System.out.println("\n\t\tBorrar Socio por id");
-			System.out.println("\t\tId: ");
-			id = (Integer.parseInt(scan.nextLine()));
+	public void borrar(int id) {
 
+		try {
 			PreparedStatement pst = cn.prepareStatement("DELETE FROM socios WHERE id = ?");
 			pst.setInt(1, id);
 			pst.execute();// ejecuta
-
-			if (pst.getUpdateCount() == 0) {// no a borrado nada
-				System.out.println("Socio no existe");
-			} else {
-				System.out.println("Socio borrado correctamente");
-			}
-
-		} catch (SQLException ex) {
-			throw ex;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	public void modificar() throws Exception {
@@ -182,6 +174,34 @@ public class ModeloSocio extends Conectar {
 			throw ex;
 		}
 
+	}
+
+	public Socio select(int idSocio) {
+		PreparedStatement ps;
+		Socio socio;
+		try {
+			ps = cn.prepareStatement("select * from socios where id = ?");
+			ps.setInt(1, idSocio);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				socio = new Socio();
+				socio.setId(rs.getInt("id"));
+				socio.setNombre(rs.getString("nombre"));
+				socio.setApellido(rs.getString("apellido"));
+				socio.setDireccion(rs.getString("direccion"));
+				socio.setPoblacion(rs.getString("poblacion"));
+				socio.setProvincia(rs.getString("provincia"));
+				socio.setDni(rs.getString("dni"));
+				return socio;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
