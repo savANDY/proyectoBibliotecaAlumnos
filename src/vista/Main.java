@@ -7,6 +7,8 @@ import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
 import vista.socio.FormularioDeBorrado;
+import vista.socio.FormularioSocio;
+import vista.socio.GestionSocio;
 
 public class Main {
 

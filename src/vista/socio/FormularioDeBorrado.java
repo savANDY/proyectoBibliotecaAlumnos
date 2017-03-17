@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorSocio;
 import modelo.Socio;
-import vista.GestionSocio;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

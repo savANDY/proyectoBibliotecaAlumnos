@@ -5,10 +5,10 @@ import modelo.Socio;
 import java.util.ArrayList;
 
 import modelo.ModeloSocio;
-import vista.FormularioSocio;
 import vista.Principal;
 import vista.socio.FormularioDeBorrado;
-import vista.GestionSocio;
+import vista.socio.FormularioSocio;
+import vista.socio.GestionSocio;
 
 public class ControladorSocio {
 

@@ -1,4 +1,4 @@
-package vista;
+package vista.socio;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorSocio;
+import vista.Principal;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
