@@ -3,6 +3,7 @@ package controlador;
 import vista.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -10,36 +11,31 @@ import modelo.*;
 
 public class ControladorLibro {
 
-	//un atributo por cada ventana de libros-->5
-	//un atributo por cada Tabla de la BD-->   1
+	// un atributo por cada ventana de libros-->5
+	// un atributo por cada Tabla de la BD--> 1
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
 	private ConsultarLibro consultarLibro;
-	private ListarLibros  listarLibros;
-	
-	
-	
-	
+	private ListarLibros listarLibros;
+
 	private ModeloLibro modeloLibro;
 
 	public ControladorLibro() {
 		super();
-		
-		
+
 	}
-	
-	
-	public void insertarLibro(String titulo,String autor,int num_pag){
-		
-		Libro libro=new Libro();
-		
+
+	public void insertarLibro(String titulo, String autor, int num_pag) {
+
+		Libro libro = new Libro();
+
 		libro.setTitulo(titulo);
 		libro.setAutor(autor);
 		libro.setNum_pag(num_pag);
-		
-		modeloLibro=new ModeloLibro();
-		
+
+		modeloLibro = new ModeloLibro();
+
 		try {
 			modeloLibro.insertar(libro);
 		} catch (Exception e) {
@@ -95,39 +91,46 @@ public class ControladorLibro {
 		this.modeloLibro = modeloLibro;
 	}
 
-
 	public void abrirGestionLibro() {
-		
-		gestionLibro.setVisible(true);
-		
-	}
 
+		gestionLibro.setVisible(true);
+
+	}
 
 	public void abrirNuevoLibro() {
 
 		nuevoLibro.setVisible(true);
-		
-	}
 
+	}
 
 	public void abrirBorrarLibro() {
+		ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
 
-		borrarLibro.setVisible(true);
-		
+		this.borrarLibro = new BorrarLibro(gestionLibro, true);
+		this.borrarLibro.rellenarLista(libros);
+		this.borrarLibro.setVisible(true);
+
 	}
-
 
 	public void abrirConsultarLibro() {
 
 		consultarLibro.setVisible(true);
-		
-	}
 
+	}
 
 	public void abrirListarLibros() {
 
 		listarLibros.setVisible(true);
-		
+
+	}
+
+	public void rellenarLista() {
+		ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
+
+		this.borrarLibro = new BorrarLibro(gestionLibro, true);
+		this.borrarLibro.rellenarLista(libros);
+		this.borrarLibro.setVisible(true);
+
 	}
 
 }

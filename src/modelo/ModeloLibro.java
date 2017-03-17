@@ -3,6 +3,8 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModeloLibro extends Conectar {
@@ -12,11 +14,31 @@ public class ModeloLibro extends Conectar {
 		super();
 	}
 
-	public ResultSet seleccionarTodos() throws SQLException {
+	public ArrayList<Libro> seleccionarTodos() {
 
-		ResultSet rs = null;
+		Statement st;
+		try {
+			st = cn.createStatement();
 
-		return rs;
+			ResultSet rs = st.executeQuery("SELECT id, titulo FROM libros");
+
+			ArrayList<Libro> libros = new ArrayList<Libro>();
+
+			while (rs.next()) {
+
+				Libro libro = new Libro();
+				libro.setId(rs.getInt(1));
+				libro.setTitulo(rs.getString(2));
+				libros.add(libro);
+			}
+
+			return libros;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void insertar(Libro libro) throws SQLException {
@@ -24,9 +46,9 @@ public class ModeloLibro extends Conectar {
 		try {
 
 			PreparedStatement pst = cn.prepareStatement("INSERT INTO LIBROS (titulo, autor, num_pag) VALUES (?,?,?)");
-			
+
 			System.out.println(pst);
-			
+
 			pst.setString(1, libro.getTitulo());
 			pst.setString(2, libro.getAutor());
 			pst.setInt(3, libro.getNum_pag());
@@ -81,7 +103,7 @@ public class ModeloLibro extends Conectar {
 	public String seleccionarId(int id_libro) throws Exception {
 
 		PreparedStatement pst;
-		String titulo="";
+		String titulo = "";
 		try {
 			pst = cn.prepareStatement("SELECT TITULO FROM LIBROS WHERE id=?");
 			pst.setInt(1, id_libro);
@@ -93,10 +115,10 @@ public class ModeloLibro extends Conectar {
 				titulo = rs.getString(1);
 			}
 			return titulo;
-			
+
 		} catch (Exception e) {
 			throw e;
 
-		} 
+		}
 	}
 }

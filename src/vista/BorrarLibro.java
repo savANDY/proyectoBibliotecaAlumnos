@@ -2,6 +2,8 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -9,10 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorSocio;
+import modelo.Libro;
+import modelo.Socio;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 
 public class BorrarLibro extends JDialog {
 
@@ -23,28 +28,23 @@ public class BorrarLibro extends JDialog {
 	private JTextField textField_3;
 
 	private ControladorSocio controladorSocio;
+	private JComboBox lista;
 
-	
-	
 	public ControladorSocio getControladorSocio() {
 		return controladorSocio;
 	}
-
-
 
 	public void setControladorSocio(ControladorSocio controladorSocio) {
 		this.controladorSocio = controladorSocio;
 	}
 
-
-
 	/**
 	 * Create the dialog.
 	 */
-	public BorrarLibro(JDialog parent, Boolean modal) {
-		
-		super(parent,modal);
-		
+	public BorrarLibro(GestionLibro parent, boolean modal) {
+
+		super(parent, modal);
+
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
@@ -52,9 +52,10 @@ public class BorrarLibro extends JDialog {
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(109, 26, 231, 36);
-			contentPanel.add(comboBox);
+			lista = new JComboBox();
+			lista.setModel(new DefaultComboBoxModel(new String[] { "Elige un libro..." }));
+			lista.setBounds(109, 26, 231, 36);
+			contentPanel.add(lista);
 		}
 		{
 			textField = new JTextField();
@@ -109,6 +110,20 @@ public class BorrarLibro extends JDialog {
 			borrar.setBounds(323, 133, 89, 23);
 			contentPanel.add(borrar);
 		}
+
+	}
+
+	public void rellenarLista(ArrayList<Libro> libros) {
+		Iterator<Libro> iterator = libros.iterator();
+		while (iterator.hasNext()) {
+			Libro libro = iterator.next();
+			this.lista.addItem(libro.getId() + " " + libro.getTitulo());
+		}
+
+		// for (Libro libro:libros){
+		// this.lista.addItem(libro.getTitulo());
+		// }
+
 	}
 
 }
