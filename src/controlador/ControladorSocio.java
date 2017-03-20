@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import modelo.ModeloSocio;
 import vista.Principal;
 import vista.socio.FormularioDeBorrado;
+import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
 import vista.socio.GestionSocio;
 
@@ -22,8 +23,17 @@ public class ControladorSocio {
 	private Principal principal;
 	private FormularioSocio formularioSocio;
 	private FormularioDeBorrado formularioDeBorrado;
+	private FormularioDeModificado formDeModificado;
 
 
+
+	public FormularioDeModificado getFormDeModificado() {
+		return formDeModificado;
+	}
+
+	public void setFormDeModificado(FormularioDeModificado formDeModificado) {
+		this.formDeModificado = formDeModificado;
+	}
 
 	/**
 	 * socio bat sortu eta modeloari insert egiteko esaten dio
@@ -67,9 +77,21 @@ public class ControladorSocio {
 		this.formularioDeBorrado.setVisible(true);
 	}
 	
+	public void abrirFormDeModificar() {
+		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
+
+		this.formDeModificado.rellenarComboSocios(socios);
+		this.formDeModificado.setVisible(true);
+	}
+	
 	public void rellenarFormDeBorrado(int idSocio) {
 		Socio socio = this.modeloSocio.select(idSocio);
 		this.formularioDeBorrado.rellenarFormulario(socio);
+	}
+	
+	public void rellenarFormDeModificado(int idSocio) {
+		Socio socio = this.modeloSocio.select(idSocio);
+		this.formDeModificado.rellenarFormulario(socio);
 	}
 
 	public void eliminarSocio(int idSocio) {
@@ -83,6 +105,11 @@ public class ControladorSocio {
 	}
 	//borrado de socio FIN
 	
+	
+	public void cerrarFormularioDeModificado() {
+		this.formDeModificado.clear();
+		this.formDeModificado.dispose();
+	}
 
 
 	public ModeloSocio getModeloSocio() {
@@ -127,6 +154,21 @@ public class ControladorSocio {
 
 	public void cerrarFormularioSocio() {
 		this.formularioSocio.dispose();
+		
+	}
+
+	public void modificarSocio(int parseInt, String nombre, String apellido, String direccion, String poblacion, String provincia,
+			String dni) {
+		Socio socio = new Socio();
+		socio.setNombre(nombre);
+		socio.setApellido(apellido);
+		socio.setDireccion(direccion);
+		socio.setPoblacion(poblacion);
+		socio.setProvincia(provincia);
+		socio.setDni(dni);
+		
+		this.modeloSocio.modificar(socio);
+		
 		
 	}
 

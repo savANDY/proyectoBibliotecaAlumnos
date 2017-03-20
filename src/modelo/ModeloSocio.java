@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModeloSocio extends Conectar {
-	Scanner scan = new Scanner(System.in);
 
 	public ModeloSocio() {
 		super();
@@ -79,26 +78,21 @@ public class ModeloSocio extends Conectar {
 
 	}
 
-	public void modificar() throws Exception {
+	public int modificar(Socio socio) {
+		int lineascambiadas;
 		try {
-			System.out.println("\n\t\tDatos Socio a modificar");
-			System.out.println("\t\tId: ");
-			int id = Integer.parseInt(scan.nextLine());
-			System.out.println("\t\tNueva direccion: ");
-			String nueva_direccion = (scan.nextLine());
-
-			PreparedStatement pst = cn.prepareStatement("UPDATE socios SET direccion=? WHERE id=?");
-
-			pst.setString(1, nueva_direccion);
-			pst.setInt(2, id);
-
-			pst.execute();// ejecuta
-
-			System.out.println("Direccion del socio " + id + " modificado exitosisimamente");
-		} catch (Exception ex) {
-			throw ex;
-
+			Statement st = super.cn.createStatement();
+			lineascambiadas = st.executeUpdate("UPDATE socios " + "SET nombre='" + socio.getNombre() + "'"
+					+ ",apellido='" + socio.getApellido() + "'" + ",direccion='" + socio.getDireccion() + "'"
+					+ ",poblacion='" + socio.getPoblacion() + "'" + ",provincia='" + socio.getProvincia() + "'"
+					+ ",dni='" + socio.getDni() + "'" + " WHERE id=" + socio.getId());
+			return lineascambiadas;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return 0;
+
 	}
 
 	public ArrayList<Socio> seleccionarDni(String dni) throws Exception {

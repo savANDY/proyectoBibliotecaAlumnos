@@ -66,10 +66,15 @@ public class GestionSocio extends JDialog {
 				contentPanel.add(borrar);
 			}
 			{
-				JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
+				JButton modificar = new JButton("MODIFICAR SOCIOS");
+				modificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						controladorSocio.abrirFormDeModificar();
+					}
+				});
 				
-				consultas.setBounds(25, 139, 189, 23);
-				contentPanel.add(consultas);
+				modificar.setBounds(25, 139, 189, 23);
+				contentPanel.add(modificar);
 			}
 			
 		}
