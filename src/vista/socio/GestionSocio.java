@@ -53,6 +53,11 @@ public class GestionSocio extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton nuevo = new JButton("NUEVO SOCIO");
+			nuevo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controladorSocio.abrirFormularioSocio();
+				}
+			});
 			nuevo.setBounds(25, 71, 189, 23);
 			contentPanel.add(nuevo);
 			{

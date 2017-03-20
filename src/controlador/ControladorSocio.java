@@ -153,6 +153,7 @@ public class ControladorSocio {
 	}
 
 	public void cerrarFormularioSocio() {
+		this.formularioSocio.clear();
 		this.formularioSocio.dispose();
 		
 	}

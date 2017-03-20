@@ -154,6 +154,18 @@ public class FormularioSocio extends JDialog {
 		contentPanel.setLayout(gl_contentPanel);
 	}
 
+	public void clear() {
+		
+		this.textNombre.setText("");
+		this.textApellido.setText("");
+		this.textDireccion.setText("");
+		this.textDni.setText("");
+		this.textPoblacion.setText("");
+		this.textProvincia.setText("");
+		
+		
+	}
+
 
 
 }
