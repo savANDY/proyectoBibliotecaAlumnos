@@ -4,6 +4,8 @@ import modelo.Socio;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.ModeloSocio;
 import vista.Principal;
 import vista.socio.FormularioDeBorrado;
@@ -51,6 +53,7 @@ public class ControladorSocio {
 			String dni) {
 
 		Socio socio = new Socio();
+		
 		socio.setNombre(nombre);
 		socio.setApellido(apellido);
 		socio.setDireccion(direccion);
@@ -58,7 +61,13 @@ public class ControladorSocio {
 		socio.setProvincia(provincia);
 		socio.setDni(dni);
 
-		this.modeloSocio.insertar(socio);
+		try {
+			this.modeloSocio.insertar(socio);
+			
+			JOptionPane.showMessageDialog(null, "SOCIO INSERTADO EN LA BD");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL INSERTAR SOCIO");
+		}
 	}
 
 	public void abrirGestionSocio() {
@@ -153,6 +162,7 @@ public class ControladorSocio {
 	}
 
 	public void cerrarFormularioSocio() {
+		this.formularioSocio.clear();
 		this.formularioSocio.dispose();
 		
 	}

@@ -80,7 +80,6 @@ public class NuevoLibro extends JDialog {
 		guardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				controladorLibro=new ControladorLibro();
 				controladorLibro.insertarLibro(titulo.getText(), autor.getText(), Integer.parseInt(num_pag.getText()));
 				
 			}
