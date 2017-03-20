@@ -3,6 +3,7 @@ package controlador;
 import vista.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ public class ControladorLibro {
 
 	//un atributo por cada ventana de libros-->5
 	//un atributo por cada Tabla de la BD-->   1
+	
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
@@ -35,10 +37,9 @@ public class ControladorLibro {
 		libro.setAutor(autor);
 		libro.setNum_pag(num_pag);
 		
-		modeloLibro=new ModeloLibro();
-		
 		try {
 			modeloLibro.insertar(libro);
+			JOptionPane.showMessageDialog(null, "LIBRO añadido con exito");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error al insertar nuevo LIBRO");
 		}
@@ -108,9 +109,20 @@ public class ControladorLibro {
 
 
 	public void abrirBorrarLibro() {
-
-		borrarLibro.setVisible(true);
 		
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		
+		try {
+			libros=modeloLibro.seleccionarTodos();
+			
+			borrarLibro.rellenarLista(libros);
+
+			borrarLibro.setVisible(true);
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBROS");
+		}
+
 	}
 
 
@@ -126,5 +138,8 @@ public class ControladorLibro {
 		listarLibros.setVisible(true);
 		
 	}
+
+
+	
 
 }

@@ -3,11 +3,11 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModeloLibro extends Conectar {
-	
-	
 	
 	
 	Scanner scan = new Scanner(System.in);
@@ -16,11 +16,23 @@ public class ModeloLibro extends Conectar {
 		super();
 	}
 
-	public ResultSet seleccionarTodos() throws SQLException {
+	public ArrayList<Libro> seleccionarTodos() throws Exception {
 
-		ResultSet rs = null;
-
-		return rs;
+		Statement st = cn.createStatement();
+		ResultSet rs = st.executeQuery("SELECT titulo FROM LIBROS ");
+		
+		//pasar de ResultSet a ArrayList
+		
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		
+		while (rs.next()){
+			
+			Libro libro=new Libro();
+			libro.setTitulo(rs.getString(1));
+			
+			libros.add(libro);
+		}
+		return libros;
 	}
 
 	public void insertar(Libro libro) throws SQLException {

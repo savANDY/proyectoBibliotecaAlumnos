@@ -34,7 +34,7 @@ public class GestionLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro(JFrame parent, Boolean modal) {
+	public GestionLibro(Principal parent, boolean modal) {
 		
 		super(parent,modal);
 		
@@ -78,7 +78,7 @@ public class GestionLibro extends JDialog {
 			contentPanel.add(consultas);
 		}
 		{
-			JLabel lblNewLabel = new JLabel("ALTA DE LIBRO");
+			JLabel lblNewLabel = new JLabel("GESTION DE LIBROS");
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 			lblNewLabel.setBounds(94, 28, 275, 23);

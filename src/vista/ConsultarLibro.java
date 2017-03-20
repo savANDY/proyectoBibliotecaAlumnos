@@ -24,7 +24,7 @@ public class ConsultarLibro extends JDialog {
 		this.controladorSocio = controladorSocio;
 	}
 
-	public ConsultarLibro(JDialog parent, Boolean modal) {
+	public ConsultarLibro(JDialog parent, boolean modal) {
 		
 		super(parent,modal);
 		
