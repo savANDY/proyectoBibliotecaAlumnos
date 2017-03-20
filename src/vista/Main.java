@@ -40,6 +40,7 @@ public class Main {
 		
 		ListarLibros listarLibros=new ListarLibros(gestionLibro,true);
 		
+		controladorLibro.setNuevoLibro(nuevoLibro);
 		controladorLibro.setBorrarLibro(borrarLibro);
 		controladorLibro.setConsultarLibro(consultarLibro);
 		controladorLibro.setGestionLibro(gestionLibro);

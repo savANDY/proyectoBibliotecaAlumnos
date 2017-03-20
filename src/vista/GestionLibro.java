@@ -34,7 +34,7 @@ public class GestionLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro(Principal principal, Boolean modal) {
+	public GestionLibro(Principal principal, boolean modal) {
 		super(principal, modal);
 
 		setBounds(100, 100, 450, 300);

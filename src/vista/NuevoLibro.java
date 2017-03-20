@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class NuevoLibro extends JDialog {
 
@@ -28,6 +29,9 @@ public class NuevoLibro extends JDialog {
 	private JLabel lblNewLabel;
 	
 	private ControladorLibro controladorLibro;
+	private JLabel txtTitulo;
+	private JLabel txtAutor;
+	private JLabel txtNumpag;
 
 	public void setControladorLibro(ControladorLibro controladorLibro) {
 		this.controladorLibro = controladorLibro;
@@ -38,7 +42,7 @@ public class NuevoLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public NuevoLibro(JDialog parent,Boolean modal) {
+	public NuevoLibro(JDialog parent,boolean modal) {
 		
 		super(parent,modal);
 		
@@ -81,8 +85,29 @@ public class NuevoLibro extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				controladorLibro=new ControladorLibro();
-				controladorLibro.insertarLibro(titulo.getText(), autor.getText(), Integer.parseInt(num_pag.getText()));
+				boolean titulo_introducido = true;	
+				boolean autor_introducido = true;	
+				boolean numpag_introducido = true;	
+				if (titulo.getText().equals("")){
+					txtTitulo.setVisible(true);
+					titulo_introducido = false;	
+				}
 				
+				if (autor.getText().equals("")) {
+					txtAutor.setVisible(true);
+					autor_introducido = false;
+				} 
+
+				if (num_pag.getText().equals("")) {
+					txtNumpag.setVisible(true);
+					numpag_introducido = false;	
+				}
+				
+				if (titulo_introducido && autor_introducido && numpag_introducido) {
+				controladorLibro.insertarLibro(titulo.getText(), autor.getText(), Integer.parseInt(num_pag.getText()));
+				} else {
+					
+				}
 			}
 		});
 		guardar.setBounds(322, 123, 89, 23);
@@ -95,7 +120,40 @@ public class NuevoLibro extends JDialog {
 		contentPanel.add(lblNewLabel);
 		
 		JButton btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				titulo.setText(null);
+				autor.setText(null);
+				num_pag.setText(null);
+				
+			}
+		});
 		btnLimpiar.setBounds(322, 173, 89, 23);
 		contentPanel.add(btnLimpiar);
+		
+		txtTitulo = new JLabel("Introduce un t\u00EDtulo");
+		txtTitulo.setVisible(false);
+		txtTitulo.setForeground(Color.RED);
+		txtTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTitulo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtTitulo.setBounds(178, 93, 119, 14);
+		contentPanel.add(txtTitulo);
+		
+		txtAutor = new JLabel("Introduce el autor");
+		txtAutor.setVisible(false);
+		txtAutor.setHorizontalAlignment(SwingConstants.CENTER);
+		txtAutor.setForeground(Color.RED);
+		txtAutor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAutor.setBounds(178, 150, 119, 14);
+		contentPanel.add(txtAutor);
+		
+		txtNumpag = new JLabel("Introduce las paginas");
+		txtNumpag.setVisible(false);
+		txtNumpag.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNumpag.setForeground(Color.RED);
+		txtNumpag.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtNumpag.setBounds(178, 210, 130, 14);
+		contentPanel.add(txtNumpag);
 	}
 }

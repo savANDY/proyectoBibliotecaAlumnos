@@ -12,6 +12,9 @@ import controlador.ControladorSocio;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class GestionSocio extends JDialog {
 
@@ -47,6 +50,12 @@ public class GestionSocio extends JDialog {
 				consultas.setBounds(25, 139, 189, 23);
 				contentPanel.add(consultas);
 			}
+			
+			JLabel lblGestionSocios = new JLabel("Gestion Socios");
+			lblGestionSocios.setHorizontalAlignment(SwingConstants.CENTER);
+			lblGestionSocios.setFont(new Font("Tahoma", Font.BOLD, 18));
+			lblGestionSocios.setBounds(63, 25, 275, 23);
+			contentPanel.add(lblGestionSocios);
 			nuevo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					new ControladorSocio().abrirFormularioSocio();
@@ -54,5 +63,4 @@ public class GestionSocio extends JDialog {
 			});
 		}
 	}
-
 }
