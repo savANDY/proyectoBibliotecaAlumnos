@@ -15,6 +15,9 @@ import vista.Principal;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class GestionSocio extends JDialog {
 
@@ -83,7 +86,11 @@ public class GestionSocio extends JDialog {
 			}
 			
 		}
+		
+		JLabel lblGestionDeSocios = new JLabel("GESTION DE SOCIOS");
+		lblGestionDeSocios.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGestionDeSocios.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblGestionDeSocios.setBounds(89, 25, 275, 23);
+		contentPanel.add(lblGestionDeSocios);
 	}
-
-
 }
