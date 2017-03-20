@@ -43,7 +43,7 @@ public class FormularioSocio extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public FormularioSocio(JDialog padre, boolean modal) {
+	public FormularioSocio(GestionSocio padre, boolean modal) {
 		super(padre, modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -84,8 +84,6 @@ public class FormularioSocio extends JDialog {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				
 				controladorSocio.insertarSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
 				
 				//((SocioVentana) getParent()).addSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());

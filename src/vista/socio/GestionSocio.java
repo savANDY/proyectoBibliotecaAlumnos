@@ -18,11 +18,8 @@ import java.awt.event.ActionEvent;
 
 public class GestionSocio extends JDialog {
 
-
 	private final JPanel contentPanel = new JPanel();
 
-
-	
 	private ControladorSocio  controladorSocio;
 	private Component consultas;
 	private AbstractButton nuevo;
@@ -76,7 +73,6 @@ public class GestionSocio extends JDialog {
 				modificar.setBounds(25, 139, 189, 23);
 				contentPanel.add(modificar);
 			}
-			
 		}
 	}
 
