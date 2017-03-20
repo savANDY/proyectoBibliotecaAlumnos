@@ -1,4 +1,4 @@
-package vista;
+package vista.socio;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorSocio;
+import vista.Principal;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -52,6 +53,11 @@ public class GestionSocio extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton nuevo = new JButton("NUEVO SOCIO");
+			nuevo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controladorSocio.abrirFormularioSocio();
+				}
+			});
 			nuevo.setBounds(25, 71, 189, 23);
 			contentPanel.add(nuevo);
 			{
@@ -65,10 +71,15 @@ public class GestionSocio extends JDialog {
 				contentPanel.add(borrar);
 			}
 			{
-				JButton consultas = new JButton("CONSULTAS  SOCIO\r\n");
+				JButton modificar = new JButton("MODIFICAR SOCIOS");
+				modificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						controladorSocio.abrirFormDeModificar();
+					}
+				});
 				
-				consultas.setBounds(25, 139, 189, 23);
-				contentPanel.add(consultas);
+				modificar.setBounds(25, 139, 189, 23);
+				contentPanel.add(modificar);
 			}
 			
 		}

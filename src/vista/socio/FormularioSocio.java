@@ -1,4 +1,4 @@
-package vista;
+package vista.socio;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -152,6 +152,18 @@ public class FormularioSocio extends JDialog {
 						.addComponent(btnCancelar))
 				.addContainerGap(49, Short.MAX_VALUE)));
 		contentPanel.setLayout(gl_contentPanel);
+	}
+
+	public void clear() {
+		
+		this.textNombre.setText("");
+		this.textApellido.setText("");
+		this.textDireccion.setText("");
+		this.textDni.setText("");
+		this.textPoblacion.setText("");
+		this.textProvincia.setText("");
+		
+		
 	}
 
 

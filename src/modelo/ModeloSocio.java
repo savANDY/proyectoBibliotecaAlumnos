@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModeloSocio extends Conectar {
-	Scanner scan = new Scanner(System.in);
 
 	public ModeloSocio() {
 		super();
@@ -66,47 +65,34 @@ public class ModeloSocio extends Conectar {
 
 	}
 
-	public void borrar(int id) throws Exception {
-		try {
-			System.out.println("\n\t\tBorrar Socio por id");
-			System.out.println("\t\tId: ");
-			id = (Integer.parseInt(scan.nextLine()));
+	public void borrar(int id) {
 
+		try {
 			PreparedStatement pst = cn.prepareStatement("DELETE FROM socios WHERE id = ?");
 			pst.setInt(1, id);
 			pst.execute();// ejecuta
-
-			if (pst.getUpdateCount() == 0) {// no a borrado nada
-				System.out.println("Socio no existe");
-			} else {
-				System.out.println("Socio borrado correctamente");
-			}
-
-		} catch (SQLException ex) {
-			throw ex;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
-	public void modificar() throws Exception {
+	public int modificar(Socio socio) {
+		int lineascambiadas;
 		try {
-			System.out.println("\n\t\tDatos Socio a modificar");
-			System.out.println("\t\tId: ");
-			int id = Integer.parseInt(scan.nextLine());
-			System.out.println("\t\tNueva direccion: ");
-			String nueva_direccion = (scan.nextLine());
-
-			PreparedStatement pst = cn.prepareStatement("UPDATE socios SET direccion=? WHERE id=?");
-
-			pst.setString(1, nueva_direccion);
-			pst.setInt(2, id);
-
-			pst.execute();// ejecuta
-
-			System.out.println("Direccion del socio " + id + " modificado exitosisimamente");
-		} catch (Exception ex) {
-			throw ex;
-
+			Statement st = super.cn.createStatement();
+			lineascambiadas = st.executeUpdate("UPDATE socios " + "SET nombre='" + socio.getNombre() + "'"
+					+ ",apellido='" + socio.getApellido() + "'" + ",direccion='" + socio.getDireccion() + "'"
+					+ ",poblacion='" + socio.getPoblacion() + "'" + ",provincia='" + socio.getProvincia() + "'"
+					+ ",dni='" + socio.getDni() + "'" + " WHERE id=" + socio.getId());
+			return lineascambiadas;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return 0;
+
 	}
 
 	public ArrayList<Socio> seleccionarDni(String dni) throws Exception {
@@ -182,6 +168,34 @@ public class ModeloSocio extends Conectar {
 			throw ex;
 		}
 
+	}
+
+	public Socio select(int idSocio) {
+		PreparedStatement ps;
+		Socio socio;
+		try {
+			ps = cn.prepareStatement("select * from socios where id = ?");
+			ps.setInt(1, idSocio);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				socio = new Socio();
+				socio.setId(rs.getInt("id"));
+				socio.setNombre(rs.getString("nombre"));
+				socio.setApellido(rs.getString("apellido"));
+				socio.setDireccion(rs.getString("direccion"));
+				socio.setPoblacion(rs.getString("poblacion"));
+				socio.setProvincia(rs.getString("provincia"));
+				socio.setDni(rs.getString("dni"));
+				return socio;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
