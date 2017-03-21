@@ -203,11 +203,11 @@ public class ModeloSocio extends Conectar {
 		PreparedStatement pst;
 		ArrayList<Socio> socios = new ArrayList<Socio>();
 		try {
-			Statement st = super.cn.createStatement();
-			ResultSet rs = st.executeQuery("select * from socios where nombre like '%" + nombre + "%'");
-			// pst.setString(1, nombre);
+			
+			pst = super.cn.prepareStatement("select * from socios where nombre like ?");
+			pst.setString(1, "%" + nombre + "%");
 
-			// ResultSet rs = pst.executeQuery();
+			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
 				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
@@ -228,8 +228,8 @@ public class ModeloSocio extends Conectar {
 		PreparedStatement pst;
 		ArrayList<Socio> socios = new ArrayList<Socio>();
 		try {
-			pst = super.cn.prepareStatement("select * from socios where apellido like '%?%'");
-			pst.setString(1, apellido);
+			pst = super.cn.prepareStatement("select * from socios where apellido like ?");
+			pst.setString(1, "%" + apellido + "%");
 
 			ResultSet rs = pst.executeQuery();
 
