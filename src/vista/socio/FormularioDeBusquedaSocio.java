@@ -172,16 +172,7 @@ public class FormularioDeBusquedaSocio extends JDialog {
 					.addGap(20))
 		);
 		contentPanel.setLayout(gl_contentPanel);
-		{
-			{
-				buscarNombre.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						//socios=(datuak lortu);
-						//rellenarTabla(socios);
-					}
-				});
-			}
-		}
+		
 	}
 
 	
