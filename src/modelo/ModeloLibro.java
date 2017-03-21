@@ -7,7 +7,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class ModeloLibro extends Conectar {
+	
+	
 	
 	
 	Scanner scan = new Scanner(System.in);
@@ -16,17 +20,14 @@ public class ModeloLibro extends Conectar {
 		super();
 	}
 
-	public ArrayList<Libro> seleccionarTodos() throws Exception {
+	public ArrayList<Libro> seleccionarTitulos() throws Exception {
 
 		Statement st = cn.createStatement();
 		ResultSet rs = st.executeQuery("SELECT titulo FROM LIBROS ");
-		
 		//pasar de ResultSet a ArrayList
 		
 		ArrayList<Libro> libros=new ArrayList<Libro>();
-		
 		while (rs.next()){
-			
 			Libro libro=new Libro();
 			libro.setTitulo(rs.getString(1));
 			
@@ -109,6 +110,77 @@ public class ModeloLibro extends Conectar {
 				titulo = rs.getString(1);
 			}
 			return titulo;
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
+	}
+
+	public Libro seleccionarDatosLibro(String titulo) throws Exception {
+		PreparedStatement pst;
+		Libro libro=new Libro();
+		
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS WHERE titulo=?");
+			pst.setString(1, titulo);
+
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			while (rs.next()) { // coge el titulo que es UNO SOLO
+				
+				libro.setId(rs.getInt(1));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(rs.getInt(4));
+			}
+			return libro;
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
+	}
+
+	public void borrarLibro(String titulo) throws Exception {
+		
+		ResultSet rs;
+		
+		try {
+			Statement st=cn.createStatement();
+			
+			rs=st.executeQuery("SELECT * FROM LIBROS");
+			
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
+		
+	}
+
+	public ArrayList<Libro> seleccionarTodos() throws Exception {
+		PreparedStatement pst;
+		Libro libro;
+		
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS ");
+			
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			//pasar de ResultSet a ArrayList
+			
+			ArrayList<Libro> libros=new ArrayList<Libro>();
+			while (rs.next()){
+				libro=new Libro();
+				libro.setId(Integer.parseInt(rs.getString(1)));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(Integer.parseInt(rs.getString(4)));
+				//System.out.println(libro.getTitulo());
+				libros.add(libro);
+			}
+			return libros;
 			
 		} catch (Exception e) {
 			throw e;
