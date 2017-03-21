@@ -176,7 +176,8 @@ public class FormularioDeBusquedaSocio extends JDialog {
 			{
 				buscarNombre.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						controladorSocio.mostrarSociosPorNombre(nombre.getText());
+						//socios=(datuak lortu);
+						//rellenarTabla(socios);
 					}
 				});
 			}
