@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import modelo.ModeloSocio;
 import vista.Principal;
+import vista.socio.FormularioDeBusquedaSocio;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
@@ -24,10 +25,19 @@ public class ControladorSocio {
 	private GestionSocio gestionSocio;
 	private Principal principal;
 	private FormularioSocio formularioSocio;
+	private FormularioDeBusquedaSocio formularioBusquedaSocio;
 	private FormularioDeBorrado formularioDeBorrado;
 	private FormularioDeModificado formDeModificado;
 
+	
+	
+	public FormularioDeBusquedaSocio getFormularioBusquedaSocio() {
+		return formularioBusquedaSocio;
+	}
 
+	public void setFormularioBusquedaSocio(FormularioDeBusquedaSocio formularioBusquedaSocio) {
+		this.formularioBusquedaSocio = formularioBusquedaSocio;
+	}
 
 	public FormularioDeModificado getFormDeModificado() {
 		return formDeModificado;
@@ -76,6 +86,11 @@ public class ControladorSocio {
 
 	public void abrirFormularioSocio() {
 		this.formularioSocio.setVisible(true);
+	}
+	
+	public void abrirBusquedaSocio(){
+		this.formularioBusquedaSocio.setVisible(true);
+		
 	}
 
 	//borrado de socio 
