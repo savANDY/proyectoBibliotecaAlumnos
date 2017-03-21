@@ -16,12 +16,11 @@ import vista.socio.GestionSocio;
 
 public class ControladorSocio {
 
-	
-	//un atributo por cada ventana de Socio
-	//un atributo para el modelo Socio
+	// un atributo por cada ventana de Socio
+	// un atributo para el modelo Socio
 
 	private ModeloSocio modeloSocio;
-	
+
 	private GestionSocio gestionSocio;
 	private Principal principal;
 	private FormularioSocio formularioSocio;
@@ -29,8 +28,6 @@ public class ControladorSocio {
 	private FormularioDeBorrado formularioDeBorrado;
 	private FormularioDeModificado formDeModificado;
 
-	
-	
 	public FormularioDeBusquedaSocio getFormularioBusquedaSocio() {
 		return formularioBusquedaSocio;
 	}
@@ -50,20 +47,26 @@ public class ControladorSocio {
 	/**
 	 * socio bat sortu eta modeloari insert egiteko esaten dio
 	 * 
-	 * @param nombre nombre del socio
-	 * @param apellido apellido del socio
-	 * @param direccion direccion del socio
-	 * @param poblacion poblacion del socio
-	 * @param provincia provincia del socio
-	 * @param dni dni del socio
-	 *  
+	 * @param nombre
+	 *            nombre del socio
+	 * @param apellido
+	 *            apellido del socio
+	 * @param direccion
+	 *            direccion del socio
+	 * @param poblacion
+	 *            poblacion del socio
+	 * @param provincia
+	 *            provincia del socio
+	 * @param dni
+	 *            dni del socio
+	 * 
 	 */
 
 	public void insertarSocio(String nombre, String apellido, String direccion, String poblacion, String provincia,
 			String dni) {
 
 		Socio socio = new Socio();
-		
+
 		socio.setNombre(nombre);
 		socio.setApellido(apellido);
 		socio.setDireccion(direccion);
@@ -73,7 +76,7 @@ public class ControladorSocio {
 
 		try {
 			this.modeloSocio.insertar(socio);
-			
+
 			JOptionPane.showMessageDialog(null, "SOCIO INSERTADO EN LA BD");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "ERROR AL INSERTAR SOCIO");
@@ -87,67 +90,65 @@ public class ControladorSocio {
 	public void abrirFormularioSocio() {
 		this.formularioSocio.setVisible(true);
 	}
-	
-	public void abrirBusquedaSocio(){
-//		ArrayList<String> direcciones = this.modeloSocio.selectDirecciones();
+
+	public void abrirBusquedaSocio() {
+		// ArrayList<String> direcciones = this.modeloSocio.selectDirecciones();
 		ArrayList<String> pueblos = this.modeloSocio.selectPoblaciones();
 		ArrayList<String> provincias = this.modeloSocio.selectProvincias();
-		
-//		this.formularioBusquedaSocio.rellenarComboDireccion(direcciones);
+
+		// this.formularioBusquedaSocio.rellenarComboDireccion(direcciones);
 		this.formularioBusquedaSocio.rellenarComboPoblacion(pueblos);
 		this.formularioBusquedaSocio.rellenarComboProvincia(provincias);
-		
+
 		this.formularioBusquedaSocio.setVisible(true);
-		
+
 	}
 
-	//borrado de socio 
+	// borrado de socio
 	public void abrirFormDeBorrado() {
 		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
 
 		this.formularioDeBorrado.rellenarComboSocios(socios);
 		this.formularioDeBorrado.setVisible(true);
 	}
-	
+
 	public void abrirFormDeModificar() {
 		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
 
 		this.formDeModificado.rellenarComboSocios(socios);
 		this.formDeModificado.setVisible(true);
 	}
-	
+
 	public void rellenarFormDeBorrado(int idSocio) {
 		Socio socio = this.modeloSocio.select(idSocio);
 		this.formularioDeBorrado.rellenarFormulario(socio);
 	}
-	
+
 	public void rellenarFormDeModificado(int idSocio) {
 		Socio socio = this.modeloSocio.select(idSocio);
 		this.formDeModificado.rellenarFormulario(socio);
 	}
 
 	public void eliminarSocio(int idSocio) {
-			this.modeloSocio.borrar(idSocio);
-			this.formularioDeBorrado.mostrarMensaje("socio borrado");
-			this.formularioDeBorrado.clearForm();
-			
-			//formularioa eguneratu
-			ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
-			this.formularioDeBorrado.rellenarComboSocios(socios);
+		this.modeloSocio.borrar(idSocio);
+		this.formularioDeBorrado.mostrarMensaje("socio borrado");
+		this.formularioDeBorrado.clearForm();
+
+		// formularioa eguneratu
+		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
+		this.formularioDeBorrado.rellenarComboSocios(socios);
 	}
 
 	public void cerrarFormularioDeBorrado() {
 		this.formularioDeBorrado.clearForm();
 		this.formularioDeBorrado.dispose();
 	}
-	//borrado de socio FIN
-	
-	
+	// borrado de socio FIN
+
 	public void cerrarFormularioDeModificado() {
 		this.formDeModificado.clear();
 		this.formDeModificado.dispose();
 	}
-
 
 	public ModeloSocio getModeloSocio() {
 		return modeloSocio;
@@ -192,11 +193,10 @@ public class ControladorSocio {
 	public void cerrarFormularioSocio() {
 		this.formularioSocio.clear();
 		this.formularioSocio.dispose();
-		
 	}
 
-	public void modificarSocio(int parseInt, String nombre, String apellido, String direccion, String poblacion, String provincia,
-			String dni) {
+	public void modificarSocio(int parseInt, String nombre, String apellido, String direccion, String poblacion,
+			String provincia, String dni) {
 		Socio socio = new Socio();
 		socio.setNombre(nombre);
 		socio.setApellido(apellido);
@@ -204,30 +204,30 @@ public class ControladorSocio {
 		socio.setPoblacion(poblacion);
 		socio.setProvincia(provincia);
 		socio.setDni(dni);
-		
-		this.modeloSocio.modificar(socio);	
+
+		this.modeloSocio.modificar(socio);
 	}
 
 	public void mostrarSociosPorNombre(String nombre) {
 		ArrayList<Socio> socios = this.modeloSocio.selectLikeNombre(nombre);
 		this.formularioBusquedaSocio.rellenarTabla(socios);
 	}
-	
+
 	public void mostrarSociosPorApellido(String apellido) {
 		ArrayList<Socio> socios = this.modeloSocio.selectLikeApellido(apellido);
 		this.formularioBusquedaSocio.rellenarTabla(socios);
 	}
-	
+
 	public void mostrarSociosPorDireccion(String direccion) {
 		ArrayList<Socio> socios = this.modeloSocio.selectPorDireccion(direccion);
 		this.formularioBusquedaSocio.rellenarTabla(socios);
 	}
-	
+
 	public void mostrarSociosPorPoblacion(String poblacion) {
 		ArrayList<Socio> socios = this.modeloSocio.selectPorPoblacion(poblacion);
 		this.formularioBusquedaSocio.rellenarTabla(socios);
 	}
-	
+
 	public void mostrarSociosPorProvincia(String provincia) {
 		ArrayList<Socio> socios = this.modeloSocio.selectPorProvincia(provincia);
 		this.formularioBusquedaSocio.rellenarTabla(socios);
