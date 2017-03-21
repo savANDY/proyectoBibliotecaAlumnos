@@ -7,38 +7,33 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class ModeloLibro extends Conectar {
+	
+	
+	
+	
 	Scanner scan = new Scanner(System.in);
 
 	public ModeloLibro() {
 		super();
 	}
 
-	public ArrayList<Libro> seleccionarTodos() {
+	public ArrayList<Libro> seleccionarTitulos() throws Exception {
 
-		Statement st;
-		try {
-			st = cn.createStatement();
-
-			ResultSet rs = st.executeQuery("SELECT id, titulo FROM libros");
-
-			ArrayList<Libro> libros = new ArrayList<Libro>();
-
-			while (rs.next()) {
-
-				Libro libro = new Libro();
-				libro.setId(rs.getInt(1));
-				libro.setTitulo(rs.getString(2));
-				libros.add(libro);
-			}
-
-			return libros;
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Statement st = cn.createStatement();
+		ResultSet rs = st.executeQuery("SELECT titulo FROM LIBROS ");
+		//pasar de ResultSet a ArrayList
+		
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		while (rs.next()){
+			Libro libro=new Libro();
+			libro.setTitulo(rs.getString(1));
+			
+			libros.add(libro);
 		}
-		return null;
+		return libros;
 	}
 
 	public void insertar(Libro libro) throws SQLException {
@@ -46,9 +41,9 @@ public class ModeloLibro extends Conectar {
 		try {
 
 			PreparedStatement pst = cn.prepareStatement("INSERT INTO LIBROS (titulo, autor, num_pag) VALUES (?,?,?)");
-
+			
 			System.out.println(pst);
-
+			
 			pst.setString(1, libro.getTitulo());
 			pst.setString(2, libro.getAutor());
 			pst.setInt(3, libro.getNum_pag());
@@ -103,7 +98,7 @@ public class ModeloLibro extends Conectar {
 	public String seleccionarId(int id_libro) throws Exception {
 
 		PreparedStatement pst;
-		String titulo = "";
+		String titulo="";
 		try {
 			pst = cn.prepareStatement("SELECT TITULO FROM LIBROS WHERE id=?");
 			pst.setInt(1, id_libro);
@@ -115,10 +110,81 @@ public class ModeloLibro extends Conectar {
 				titulo = rs.getString(1);
 			}
 			return titulo;
-
+			
 		} catch (Exception e) {
 			throw e;
 
-		}
+		} 
+	}
+
+	public Libro seleccionarDatosLibro(String titulo) throws Exception {
+		PreparedStatement pst;
+		Libro libro=new Libro();
+		
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS WHERE titulo=?");
+			pst.setString(1, titulo);
+
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			while (rs.next()) { // coge el titulo que es UNO SOLO
+				
+				libro.setId(rs.getInt(1));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(rs.getInt(4));
+			}
+			return libro;
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
+	}
+
+	public void borrarLibro(String titulo) throws Exception {
+		
+		ResultSet rs;
+		
+		try {
+			Statement st=cn.createStatement();
+			
+			rs=st.executeQuery("SELECT * FROM LIBROS");
+			
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
+		
+	}
+
+	public ArrayList<Libro> seleccionarTodos() throws Exception {
+		PreparedStatement pst;
+		Libro libro;
+		
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS ");
+			
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			//pasar de ResultSet a ArrayList
+			
+			ArrayList<Libro> libros=new ArrayList<Libro>();
+			while (rs.next()){
+				libro=new Libro();
+				libro.setId(Integer.parseInt(rs.getString(1)));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(Integer.parseInt(rs.getString(4)));
+				//System.out.println(libro.getTitulo());
+				libros.add(libro);
+			}
+			return libros;
+			
+		} catch (Exception e) {
+			throw e;
+
+		} 
 	}
 }

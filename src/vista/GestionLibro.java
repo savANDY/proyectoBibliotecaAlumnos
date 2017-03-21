@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class GestionLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
+	
 	private ControladorLibro controladorLibro;
 
 	public ControladorLibro getControladorLibro() {
@@ -34,9 +34,10 @@ public class GestionLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro(Principal principal, boolean modal) {
-		super(principal, modal);
-
+	public GestionLibro(Principal parent, boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
@@ -47,7 +48,7 @@ public class GestionLibro extends JDialog {
 			JButton nuevo = new JButton("NUEVO LIBRO");
 			nuevo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
+					
 					controladorLibro.abrirNuevoLibro();
 				}
 			});
@@ -77,17 +78,17 @@ public class GestionLibro extends JDialog {
 			contentPanel.add(consultas);
 		}
 		{
-			JLabel lblNewLabel = new JLabel("ALTA DE LIBRO");
+			JLabel lblNewLabel = new JLabel("GESTION DE LIBRO");
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 			lblNewLabel.setBounds(94, 28, 275, 23);
 			contentPanel.add(lblNewLabel);
 		}
-
+		
 		JButton listar = new JButton("LISTAR LIBROS");
 		listar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				controladorLibro.abrirListarLibros();
 			}
 		});

@@ -3,7 +3,6 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,23 +12,30 @@ import javax.swing.border.EmptyBorder;
 import controlador.ControladorLibro;
 import controlador.ControladorSocio;
 import modelo.Libro;
-import modelo.Socio;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BorrarLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtAsd;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField id;
+	private JTextField titulo;
+	private JTextField autor;
+	private JTextField num_pag;
 
 	private ControladorLibro controladorLibro;
 	private JComboBox lista;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label;
+	private JButton borrar;
 
 	public ControladorLibro getControladorLibro() {
 		return controladorLibro;
@@ -42,10 +48,10 @@ public class BorrarLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public BorrarLibro(GestionLibro parent, boolean modal) {
-
-		super(parent, modal);
-
+	public BorrarLibro(JDialog parent, boolean modal) {
+		
+		super(parent,modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
@@ -54,84 +60,104 @@ public class BorrarLibro extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			lista = new JComboBox();
-			lista.setModel(new DefaultComboBoxModel(new String[] { "Elige un libro..." }));
+			lista.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					controladorLibro.seleccionarDatosLibro((String)lista.getSelectedItem());
+						
+				}
+			});
+			lista.setModel(new DefaultComboBoxModel(new String[] {"Elige libro....."}));
 			lista.setBounds(109, 26, 231, 36);
 			contentPanel.add(lista);
 		}
 		{
-			txtAsd = new JTextField();
-			txtAsd.setEditable(false);
-			txtAsd.setColumns(10);
-			txtAsd.setBounds(219, 73, 86, 20);
-			contentPanel.add(txtAsd);
+			id = new JTextField();
+			id.setEditable(false);
+			id.setColumns(10);
+			id.setBounds(219, 73, 86, 20);
+			contentPanel.add(id);
 		}
 		{
-			JLabel label = new JLabel("Id Libro");
-			label.setBounds(60, 78, 46, 14);
-			contentPanel.add(label);
+			label_1 = new JLabel("Id Libro");
+			label_1.setBounds(60, 78, 46, 14);
+			contentPanel.add(label_1);
 		}
 		{
-			textField_1 = new JTextField();
-			textField_1.setEditable(false);
-			textField_1.setColumns(10);
-			textField_1.setBounds(219, 129, 86, 20);
-			contentPanel.add(textField_1);
+			titulo = new JTextField();
+			titulo.setEditable(false);
+			titulo.setColumns(10);
+			titulo.setBounds(219, 129, 86, 20);
+			contentPanel.add(titulo);
 		}
 		{
-			JLabel label = new JLabel("Titulo");
-			label.setBounds(60, 133, 46, 14);
-			contentPanel.add(label);
+			label_2 = new JLabel("Titulo");
+			label_2.setBounds(60, 133, 46, 14);
+			contentPanel.add(label_2);
 		}
 		{
-			textField_2 = new JTextField();
-			textField_2.setEditable(false);
-			textField_2.setColumns(10);
-			textField_2.setBounds(219, 185, 86, 20);
-			contentPanel.add(textField_2);
+			autor = new JTextField();
+			autor.setEditable(false);
+			autor.setColumns(10);
+			autor.setBounds(219, 185, 86, 20);
+			contentPanel.add(autor);
 		}
 		{
-			JLabel label = new JLabel("Autor");
-			label.setBounds(60, 188, 46, 14);
-			contentPanel.add(label);
+			label_3 = new JLabel("Autor");
+			label_3.setBounds(60, 188, 46, 14);
+			contentPanel.add(label_3);
 		}
 		{
-			textField_3 = new JTextField();
-			textField_3.setEditable(false);
-			textField_3.setColumns(10);
-			textField_3.setBounds(219, 241, 86, 20);
-			contentPanel.add(textField_3);
+			num_pag = new JTextField();
+			num_pag.setEditable(false);
+			num_pag.setColumns(10);
+			num_pag.setBounds(219, 241, 86, 20);
+			contentPanel.add(num_pag);
 		}
 		{
-			JLabel label = new JLabel("Num  de Paginas");
+			label = new JLabel("Num  de Paginas");
 			label.setBounds(60, 243, 90, 14);
 			contentPanel.add(label);
 		}
 		{
-			JButton borrar = new JButton("BORRAR");
+			borrar = new JButton("BORRAR");
+			borrar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					controladorLibro.borrarLibro((String)lista.getSelectedItem());
+					limpiar();
+					controladorLibro.abrirBorrarLibro();
+				}
+			});
 			borrar.setBounds(323, 133, 89, 23);
 			contentPanel.add(borrar);
 		}
-
+	
 	}
 
 	public void rellenarLista(ArrayList<Libro> libros) {
-		Iterator<Libro> iterator = libros.iterator();
-		while (iterator.hasNext()) {
-			Libro libro = iterator.next();
-			this.lista.addItem(libro.getId() + " " + libro.getTitulo());
+		
+		for (Libro libro:libros){
+			
+			lista.addItem(libro.getTitulo());
 		}
-		// for (Libro libro:libros){
-		// this.lista.addItem(libro.getTitulo());
-		// }
-
 	}
 
-	public void rellenarCampos() {
-		String titulo_aux = lista.getSelectedItem().toString();
+	public void mostrarDatos(Libro libro) {
 		
-		controladorLibro.seleccionarPorTitulo(titulo_aux);
+		id.setText(String.valueOf(libro.getId()));
+		titulo.setText(libro.getTitulo());
+		autor.setText(libro.getAutor());
+		num_pag.setText(String.valueOf(libro.getNum_pag()));
 		
-		txtAsd.setText("asd");
+	}
+public void limpiar() {
+		lista.setSelectedIndex(0);
+//		id.setText("");
+//		titulo.setText("");
+//		autor.setText("");
+//		num_pag.setText("");
+		
 	}
 
 }

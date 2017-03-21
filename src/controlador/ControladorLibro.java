@@ -6,49 +6,44 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import modelo.*;
 
 public class ControladorLibro {
 
-	// un atributo por cada ventana de libros-->5
-	// un atributo por cada Tabla de la BD--> 1
+	//un atributo por cada ventana de libros-->5
+	//un atributo por cada Tabla de la BD-->   1
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
 	private ConsultarLibro consultarLibro;
-	private ListarLibros listarLibros;
+	private ListarLibros  listarLibros;
 
 	private ModeloLibro modeloLibro;
 
 	public ControladorLibro() {
 		super();
-
+		
+		
 	}
-
-	public void insertarLibro(String titulo, String autor, int num_pag) {
-
-		Libro libro = new Libro();
-
+	
+	
+	public void insertarLibro(String titulo,String autor,int num_pag){
+		
+		Libro libro=new Libro();
+		
 		libro.setTitulo(titulo);
 		libro.setAutor(autor);
 		libro.setNum_pag(num_pag);
-
-		modeloLibro = new ModeloLibro();
-
+		
 		try {
 			modeloLibro.insertar(libro);
+			JOptionPane.showMessageDialog(null, "LIBRO añadido con exito");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error al insertar nuevo LIBRO");
 		}
 	}
-	
-	public void seleccionarPorTitulo(String titulo){
-		
-		
-		
-	}
-	
 
 	public GestionLibro getGestionLibro() {
 		return gestionLibro;
@@ -98,46 +93,83 @@ public class ControladorLibro {
 		this.modeloLibro = modeloLibro;
 	}
 
+
 	public void abrirGestionLibro() {
-
+		
 		gestionLibro.setVisible(true);
-
+		
 	}
+
 
 	public void abrirNuevoLibro() {
 
 		nuevoLibro.setVisible(true);
-
+		
 	}
+
 
 	public void abrirBorrarLibro() {
-		ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
+		
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		
+		try {
+			libros=modeloLibro.seleccionarTitulos();
+			borrarLibro.rellenarLista(libros);
 
-		this.borrarLibro = new BorrarLibro(gestionLibro, true);
-		this.borrarLibro.rellenarLista(libros);
-		this.borrarLibro.setVisible(true);
-
+			borrarLibro.setVisible(true);
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
+		}
 	}
+
 
 	public void abrirConsultarLibro() {
+		
+		ArrayList<Libro> libros;
+		try {
+			libros = modeloLibro.seleccionarTodos();
+			consultarLibro.rellenarTabla(libros);
 
-		consultarLibro.setVisible(true);
-
+			consultarLibro.setVisible(true);
+		
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
+		}
+		
+		
 	}
-
 	public void abrirListarLibros() {
 
 		listarLibros.setVisible(true);
-
+		
 	}
 
-	public void rellenarLista() {
-		ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
-
-		this.borrarLibro = new BorrarLibro(gestionLibro, true);
-		this.borrarLibro.rellenarLista(libros);
-		this.borrarLibro.setVisible(true);
-
+	public void seleccionarDatosLibro(String titulo) {
+		
+		try {
+			Libro libro=modeloLibro.seleccionarDatosLibro(titulo);
+			borrarLibro.mostrarDatos(libro);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
+		}
+		
 	}
+
+
+	public void borrarLibro(String titulo) {
+		
+		try {
+			modeloLibro.borrarLibro(titulo);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL BORRAR LIBRO");
+		
+		}
+		
+	}
+
+
+
+	
 
 }
