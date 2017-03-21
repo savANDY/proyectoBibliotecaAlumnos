@@ -35,6 +35,8 @@ public class FormularioDeBusquedaSocio extends JDialog {
 
 	private ControladorSocio controladorSocio;
 	private JTable table;
+	private JComboBox comboProvincias;
+	private JComboBox comboPoblacion;
 
 	/**
 	 * Create the dialog.
@@ -70,6 +72,7 @@ public class FormularioDeBusquedaSocio extends JDialog {
 		JButton buscarNombre = new JButton("Buscar");
 		buscarNombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controladorSocio.mostrarSociosPorNombre(nombre.getText());
 			}
 		});
 		
@@ -78,6 +81,7 @@ public class FormularioDeBusquedaSocio extends JDialog {
 		JButton buscarApellido = new JButton("Buscar");
 		buscarApellido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controladorSocio.mostrarSociosPorApellido(apellido.getText());
 			}
 		});
 		
@@ -85,23 +89,25 @@ public class FormularioDeBusquedaSocio extends JDialog {
 		JButton buscarPoblacion = new JButton("Buscar");
 		buscarPoblacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controladorSocio.mostrarSociosPorPoblacion(String.valueOf(comboPoblacion.getSelectedItem()));
 			}
 		});
 		
 		JLabel lblProvincia = new JLabel("Provincia");
 		
-		JComboBox comboProvincias = new JComboBox();
+		comboProvincias = new JComboBox();
 		comboProvincias.setEditable(true);
 		
 		table = new JTable();
 		table.setToolTipText("Prueba");
 		
-		JComboBox comboPoblacion = new JComboBox();
+		comboPoblacion = new JComboBox();
 		comboPoblacion.setEditable(true);
 		
 		JButton buscarProvincia = new JButton("Buscar");
 		buscarProvincia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controladorSocio.mostrarSociosPorProvincia(String.valueOf(comboProvincias.getSelectedItem()));
 			}
 		});
 		
