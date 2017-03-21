@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorLibro;
+import vista.Principal;
 
 import javax.swing.JLabel;
 import java.awt.Font;

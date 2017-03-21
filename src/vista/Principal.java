@@ -1,4 +1,4 @@
-package vista.libro;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

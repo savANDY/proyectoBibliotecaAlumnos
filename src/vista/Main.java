@@ -1,4 +1,4 @@
-package vista.libro;
+package vista;
 
 import controlador.ControladorLibro;
 import controlador.ControladorPrestamo;
@@ -6,6 +6,11 @@ import controlador.ControladorSocio;
 import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
+import vista.libro.BorrarLibro;
+import vista.libro.ConsultarLibro;
+import vista.libro.GestionLibro;
+import vista.libro.ListarLibros;
+import vista.libro.NuevoLibro;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
