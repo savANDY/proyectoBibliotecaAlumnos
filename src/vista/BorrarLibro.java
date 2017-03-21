@@ -30,12 +30,12 @@ public class BorrarLibro extends JDialog {
 	private JTextField num_pag;
 
 	private ControladorLibro controladorLibro;
+	
 	private JComboBox lista;
 	private JLabel label_1;
 	private JLabel label_2;
 	private JLabel label_3;
 	private JLabel label;
-	private JButton borrar;
 
 	public ControladorLibro getControladorLibro() {
 		return controladorLibro;
@@ -119,19 +119,17 @@ public class BorrarLibro extends JDialog {
 			label.setBounds(60, 243, 90, 14);
 			contentPanel.add(label);
 		}
-		{
-			borrar = new JButton("BORRAR");
-			borrar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					
-					controladorLibro.borrarLibro((String)lista.getSelectedItem());
-					limpiar();
-					controladorLibro.abrirBorrarLibro();
-				}
-			});
-			borrar.setBounds(323, 133, 89, 23);
-			contentPanel.add(borrar);
-		}
+		
+		JButton borrar = new JButton("BORRAR");
+		borrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				controladorLibro.borrarLibro((String)lista.getSelectedItem());
+				
+			}
+		});
+		borrar.setBounds(335, 128, 89, 23);
+		contentPanel.add(borrar);
 	
 	}
 
@@ -159,5 +157,4 @@ public void limpiar() {
 //		num_pag.setText("");
 		
 	}
-
 }

@@ -160,6 +160,7 @@ public class ControladorLibro {
 	public void borrarLibro(String titulo) {
 		
 		try {
+			System.out.println("BORRARLIBRO");
 			modeloLibro.borrarLibro(titulo);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "ERROR AL BORRAR LIBRO");

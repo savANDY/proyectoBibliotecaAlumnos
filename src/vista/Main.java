@@ -76,13 +76,17 @@ public class Main {
 		FormularioDeBusquedaSocio formularioDeBusqueda = new FormularioDeBusquedaSocio(gestionSocio, true);
 		formularioDeBusqueda.setControladorSocio(controladorSocio);
 		
+		FormularioTodosSocios formularioTodosSocios = new FormularioTodosSocios(gestionSocio, true);
+		formularioTodosSocios.setControladorSocio(controladorSocio);
+		
+		
 		//rellenar controladorSocio
 		controladorSocio.setModeloSocio(modeloSocio);
 		controladorSocio.setGestionSocio(gestionSocio);
 		controladorSocio.setFormularioDeBorrado(formularioDeBorrado);
 		controladorSocio.setFormularioSocio(formularioSocio);
 		controladorSocio.setFormDeModificado(formularioDeModificado);
-		
+		controladorSocio.setFormTodosSocios(formularioTodosSocios);
 		//prueba de formulario de busqueda
 		controladorSocio.setFormularioBusquedaSocio(formularioDeBusqueda);
 		

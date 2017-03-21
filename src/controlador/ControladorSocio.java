@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ModeloSocio;
+import vista.FormularioTodosSocios;
 import vista.Principal;
 import vista.socio.FormularioDeBusquedaSocio;
 import vista.socio.FormularioDeBorrado;
@@ -28,9 +29,18 @@ public class ControladorSocio {
 	private FormularioDeBusquedaSocio formularioBusquedaSocio;
 	private FormularioDeBorrado formularioDeBorrado;
 	private FormularioDeModificado formDeModificado;
+	private FormularioTodosSocios formTodosSocios;
 
 	
 	
+	public FormularioTodosSocios getFormTodosSocios() {
+		return formTodosSocios;
+	}
+
+	public void setFormTodosSocios(FormularioTodosSocios formTodosSocios) {
+		this.formTodosSocios = formTodosSocios;
+	}
+
 	public FormularioDeBusquedaSocio getFormularioBusquedaSocio() {
 		return formularioBusquedaSocio;
 	}
@@ -193,6 +203,18 @@ public class ControladorSocio {
 		socio.setDni(dni);
 		
 		this.modeloSocio.modificar(socio);	
+	}
+
+	public void abrirFormListar() {
+		
+		ArrayList<Socio> socios=new ArrayList<Socio>(); 
+		
+		socios=modeloSocio.seleccionarTodos();
+		
+		formTodosSocios.rellenarTabla(socios);
+		
+		formTodosSocios.setVisible(true);
+		
 	}
 
 }

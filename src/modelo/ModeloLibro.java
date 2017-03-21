@@ -144,13 +144,21 @@ public class ModeloLibro extends Conectar {
 
 	public void borrarLibro(String titulo) throws Exception {
 		
-		ResultSet rs;
+		PreparedStatement pst;
+		
 		
 		try {
-			Statement st=cn.createStatement();
+			pst = cn.prepareStatement("DELETE FROM LIBROS WHERE TITULO=?");
+			pst.setString(1, titulo);
 			
-			rs=st.executeQuery("SELECT * FROM LIBROS");
+			int count=pst.executeUpdate();
+			System.out.println(pst +"  "+ count);
 			
+			if (count>=1){
+				JOptionPane.showMessageDialog(null, "LIBRO BORRADO");
+			} else {
+				JOptionPane.showMessageDialog(null, "LIBRO NO EXISTE");
+			}
 			
 		} catch (Exception e) {
 			throw e;

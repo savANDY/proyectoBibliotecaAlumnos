@@ -77,10 +77,12 @@ public class ConsultarLibro extends JDialog {
 		// cargar la tabla
 		DefaultTableModel dtm = new DefaultTableModel();
 
-		dtm.setColumnIdentifiers(new Object[] { "TITULO", "AUTOR", "NUM PAGINAS" });
-
+		String [] encabezados={ "TITULO", "AUTOR", "NUM PAGINAS" };
+		
+		dtm.setColumnIdentifiers(encabezados);
 		for (Libro libro : libros) {
-			dtm.addRow(new Object[] { libro.getTitulo(), libro.getAutor(), String.valueOf(libro.getNum_pag()) });
+			String[] fila={ libro.getTitulo(), libro.getAutor(), String.valueOf(libro.getNum_pag()) };
+			dtm.addRow(fila);
 		}
 		tabla.setModel(dtm);
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(dtm);

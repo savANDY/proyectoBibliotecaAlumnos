@@ -26,6 +26,7 @@ public class GestionSocio extends JDialog {
 	private ControladorSocio  controladorSocio;
 	private Component consultas;
 	private AbstractButton nuevo;
+	private JButton listar;
 
 	
 	
@@ -98,5 +99,17 @@ public class GestionSocio extends JDialog {
 		});
 		button.setBounds(25, 173, 189, 23);
 		contentPanel.add(button);
+		{
+			listar = new JButton("LISTAR SOCIOS");
+			listar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					controladorSocio.abrirFormListar();
+					
+				}
+			});
+			listar.setBounds(25, 207, 189, 23);
+			contentPanel.add(listar);
+		}
 	}
 }
