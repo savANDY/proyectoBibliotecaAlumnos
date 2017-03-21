@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ModeloSocio;
-import vista.Principal;
+import vista.libro.Principal;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;

@@ -1,7 +1,5 @@
 package controlador;
 
-import vista.*;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -9,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.*;
+import vista.libro.*;
 
 public class ControladorLibro {
 

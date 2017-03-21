@@ -1,4 +1,4 @@
-package vista;
+package vista.libro;
 
 import controlador.ControladorLibro;
 import controlador.ControladorPrestamo;
