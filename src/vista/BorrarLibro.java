@@ -30,7 +30,6 @@ public class BorrarLibro extends JDialog {
 	private JTextField num_pag;
 
 	private ControladorLibro controladorLibro;
-	
 	private JComboBox lista;
 	private JLabel label_1;
 	private JLabel label_2;
@@ -64,8 +63,8 @@ public class BorrarLibro extends JDialog {
 			lista.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					
-					
+					controladorLibro.seleccionarDatosLibro((String)lista.getSelectedItem());
+						
 				}
 			});
 			lista.setModel(new DefaultComboBoxModel(new String[] {"Elige libro....."}));
@@ -122,6 +121,14 @@ public class BorrarLibro extends JDialog {
 		}
 		{
 			borrar = new JButton("BORRAR");
+			borrar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					controladorLibro.borrarLibro((String)lista.getSelectedItem());
+					limpiar();
+					controladorLibro.abrirBorrarLibro();
+				}
+			});
 			borrar.setBounds(323, 133, 89, 23);
 			contentPanel.add(borrar);
 		}
@@ -134,6 +141,23 @@ public class BorrarLibro extends JDialog {
 			
 			lista.addItem(libro.getTitulo());
 		}
+	}
+
+	public void mostrarDatos(Libro libro) {
+		
+		id.setText(String.valueOf(libro.getId()));
+		titulo.setText(libro.getTitulo());
+		autor.setText(libro.getAutor());
+		num_pag.setText(String.valueOf(libro.getNum_pag()));
+		
+	}
+public void limpiar() {
+		lista.setSelectedIndex(0);
+//		id.setText("");
+//		titulo.setText("");
+//		autor.setText("");
+//		num_pag.setText("");
+		
 	}
 
 }

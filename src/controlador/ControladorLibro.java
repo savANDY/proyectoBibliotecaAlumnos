@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import modelo.*;
 
@@ -13,7 +14,6 @@ public class ControladorLibro {
 
 	//un atributo por cada ventana de libros-->5
 	//un atributo por cada Tabla de la BD-->   1
-	
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
@@ -113,31 +113,61 @@ public class ControladorLibro {
 		ArrayList<Libro> libros=new ArrayList<Libro>();
 		
 		try {
-			libros=modeloLibro.seleccionarTodos();
-			
+			libros=modeloLibro.seleccionarTitulos();
 			borrarLibro.rellenarLista(libros);
 
 			borrarLibro.setVisible(true);
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBROS");
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
 		}
-
 	}
 
 
 	public void abrirConsultarLibro() {
+		
+		ArrayList<Libro> libros;
+		try {
+			libros = modeloLibro.seleccionarTodos();
+			consultarLibro.rellenarTabla(libros);
 
-		consultarLibro.setVisible(true);
+			consultarLibro.setVisible(true);
+		
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
+		}
+		
 		
 	}
-
-
 	public void abrirListarLibros() {
 
 		listarLibros.setVisible(true);
 		
 	}
+
+	public void seleccionarDatosLibro(String titulo) {
+		
+		try {
+			Libro libro=modeloLibro.seleccionarDatosLibro(titulo);
+			borrarLibro.mostrarDatos(libro);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBRO");
+		}
+		
+	}
+
+
+	public void borrarLibro(String titulo) {
+		
+		try {
+			modeloLibro.borrarLibro(titulo);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL BORRAR LIBRO");
+		
+		}
+		
+	}
+
 
 
 	
