@@ -7,8 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import controlador.ControladorSocio;
+import modelo.Libro;
 import modelo.Socio;
 
 import javax.swing.GroupLayout;
@@ -24,6 +27,9 @@ import java.util.Iterator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class FormularioDeBusquedaSocio extends JDialog {
 //	public FormularioBusquedaSocio() {
@@ -44,10 +50,10 @@ public class FormularioDeBusquedaSocio extends JDialog {
 	public FormularioDeBusquedaSocio(GestionSocio parent, boolean modal) {
 		super(parent, modal);
 
-		setBounds(100, 100, 508, 330);
+		setBounds(100, 100, 596, 328);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		getContentPane().add(contentPanel, BorderLayout.SOUTH);
 
 		JLabel lblNombre = new JLabel("Nombre");
 
@@ -98,9 +104,6 @@ public class FormularioDeBusquedaSocio extends JDialog {
 		comboProvincias = new JComboBox();
 		comboProvincias.setEditable(true);
 		
-		table = new JTable();
-		table.setToolTipText("Prueba");
-		
 		comboPoblacion = new JComboBox();
 		comboPoblacion.setEditable(true);
 		
@@ -111,72 +114,87 @@ public class FormularioDeBusquedaSocio extends JDialog {
 			}
 		});
 		
+		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGap(22)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPanel.createSequentialGroup()
-									.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPanel.createSequentialGroup()
-											.addComponent(lblNombre)
-											.addGap(18)
-											.addComponent(nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPanel.createSequentialGroup()
-											.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblPoblacion)
-												.addComponent(lblApellido)
-												.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(comboProvincias, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(comboPoblacion, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(apellido))))
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(buscarNombre, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-										.addComponent(buscarApellido, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(buscarPoblacion, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(buscarProvincia, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-								.addComponent(lblSelccionaElAlumno)))
+								.addComponent(lblNombre)
+								.addComponent(lblApellido)
+								.addComponent(lblPoblacion)
+								.addComponent(lblProvincia, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+							.addGap(10)
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboPoblacion, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboProvincias, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+							.addGap(10)
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(buscarNombre, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+								.addComponent(buscarApellido, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+								.addComponent(buscarPoblacion, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+								.addComponent(buscarProvincia, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addGap(35)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 327, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(120, GroupLayout.PREFERRED_SIZE))
+							.addGap(22)
+							.addComponent(lblSelccionaElAlumno))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 550, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
+					.addGap(11)
 					.addComponent(lblSelccionaElAlumno)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNombre)
-						.addComponent(nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblNombre))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(buscarNombre))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblApellido)
-						.addComponent(apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblApellido))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(buscarApellido))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(11)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblPoblacion)
-						.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(comboPoblacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(buscarPoblacion)))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(comboPoblacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(buscarPoblacion))
 					.addGap(18)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblProvincia)
-						.addComponent(comboProvincias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblProvincia))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(comboProvincias, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(buscarProvincia))
-					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
-					.addGap(20))
+					.addGap(7)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+					.addGap(12))
 		);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setToolTipText("Prueba");
 		contentPanel.setLayout(gl_contentPanel);
 		
 	}
@@ -194,6 +212,16 @@ public class FormularioDeBusquedaSocio extends JDialog {
 	}
 
 	public void rellenarTabla(ArrayList<Socio> socios) {
+		DefaultTableModel dtm = new DefaultTableModel();
+
+		dtm.setColumnIdentifiers(new Object[] { "NOMBRE", "APELLIDO", "DIRECCION", "POBLACION", "PROVINCIA", "DNI"});
+
+		for (Socio socio : socios) {
+			dtm.addRow(new Object[] { socio.getNombre(), socio.getApellido(), socio.getDireccion(), socio.getPoblacion(), socio.getProvincia(), socio.getDni()});
+		}
+		table.setModel(dtm);
+		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(dtm);
+		table.setRowSorter(modeloOrdenado);
 		
 	}
 }
