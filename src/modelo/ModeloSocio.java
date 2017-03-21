@@ -47,9 +47,9 @@ public class ModeloSocio extends Conectar {
 
 		PreparedStatement pst;
 		try {
-			pst = cn.prepareStatement("INSERT INTO SOCIOS(nombre,apellido,direccion,"
-					+ "poblacion,provincia,dni) VALUES (?,?,?,?,?,?)");
-			
+			pst = cn.prepareStatement(
+					"INSERT INTO SOCIOS(nombre,apellido,direccion," + "poblacion,provincia,dni) VALUES (?,?,?,?,?,?)");
+
 			pst.setString(1, socio.getNombre());
 			pst.setString(2, socio.getApellido());
 			pst.setString(3, socio.getDireccion());
@@ -197,6 +197,126 @@ public class ModeloSocio extends Conectar {
 		}
 
 		return null;
+	}
+
+	public ArrayList<Socio> selectLikeNombre(String nombre) {
+		PreparedStatement pst;
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		try {
+			pst = super.cn.prepareStatement("select * from socios where nombre like '%?%'");
+			pst.setString(1, nombre);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
+
+				socios.add(socio);
+			}
+			return socios;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return socios;
+	}
+	
+	public ArrayList<Socio> selectLikeApellido(String apellido) {
+		PreparedStatement pst;
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		try {
+			pst = super.cn.prepareStatement("select * from socios where apellido like '%?%'");
+			pst.setString(1, apellido);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
+
+				socios.add(socio);
+			}
+			return socios;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return socios;
+	}
+	
+	public ArrayList<Socio> selectPorDireccion(String direccion) {
+		PreparedStatement pst;
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		try {
+			pst = super.cn.prepareStatement("select * from socios where direccion = '?'");
+			pst.setString(1, direccion);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
+
+				socios.add(socio);
+			}
+			return socios;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return socios;
+	}
+	
+	public ArrayList<Socio> selectPorPoblacion(String poblacion) {
+		PreparedStatement pst;
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		try {
+			pst = super.cn.prepareStatement("select * from socios where poblacion = '?'");
+			pst.setString(1, poblacion);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
+
+				socios.add(socio);
+			}
+			return socios;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return socios;
+	}
+	
+	public ArrayList<Socio> selectPorProvincia(String provincia) {
+		PreparedStatement pst;
+		ArrayList<Socio> socios = new ArrayList<Socio>();
+		try {
+			pst = super.cn.prepareStatement("select * from socios where provincia = '?'");
+			pst.setString(1, provincia);
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				Socio socio = new Socio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7));
+
+				socios.add(socio);
+			}
+			return socios;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return socios;
 	}
 
 }
