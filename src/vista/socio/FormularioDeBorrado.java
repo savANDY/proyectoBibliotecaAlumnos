@@ -66,12 +66,17 @@ public class FormularioDeBorrado extends JDialog {
 		comboBoxSocios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// System.out.println(e.getActionCommand());
-				String nombreSocio = (String) comboBoxSocios.getSelectedItem();
-				if (nombreSocio != null) {
-					String[] partes = nombreSocio.split(":");
-					// en la parte 0 esta el id del socio
-					controladorSocio.rellenarFormDeBorrado(Integer.parseInt(partes[0]));
+				if(comboBoxSocios.getSelectedIndex() == -1){
+					clearTextFields();
+				}else{
+					String nombreSocio = (String) comboBoxSocios.getSelectedItem();
+					if (nombreSocio != null) {
+						String[] partes = nombreSocio.split(":");
+						// en la parte 0 esta el id del socio
+						controladorSocio.rellenarFormDeBorrado(Integer.parseInt(partes[0]));
+					}
 				}
+				
 			}
 		});
 		
@@ -229,6 +234,7 @@ public class FormularioDeBorrado extends JDialog {
 			Socio socio = iterator.next();
 			this.comboBoxSocios.addItem(socio.getId() + ": " + socio.getNombre() + " " + socio.getApellido());
 		}
+		comboBoxSocios.setSelectedIndex(-1);
 	}
 
 	public ControladorSocio getControladorSocio() {
@@ -249,8 +255,12 @@ public class FormularioDeBorrado extends JDialog {
 		this.dni.setText(socio.getDni());
 	}
 
-	public void clear() {
+	public void clearForm() {
 		this.comboBoxSocios.removeAllItems();
+		this.clearTextFields();
+	}
+	
+	public void clearTextFields(){
 		this.id.setText("");
 		this.nombre.setText("");
 		this.apellido.setText("");
@@ -258,6 +268,7 @@ public class FormularioDeBorrado extends JDialog {
 		this.poblacion.setText("");
 		this.provincia.setText("");
 		this.dni.setText("");
+		
 	}
 
 	public void mostrarMensaje(String string) {
