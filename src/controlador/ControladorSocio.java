@@ -195,4 +195,29 @@ public class ControladorSocio {
 		this.modeloSocio.modificar(socio);	
 	}
 
+	public void mostrarSociosPorNombre(String nombre) {
+		ArrayList<Socio> socios = this.modeloSocio.selectLikeNombre(nombre);
+		this.formularioBusquedaSocio.rellenarTabla(socios);
+	}
+	
+	public void mostrarSociosPorApellido(String apellido) {
+		ArrayList<Socio> socios = this.modeloSocio.selectLikeApellido(apellido);
+		this.formularioBusquedaSocio.rellenarTabla(socios);
+	}
+	
+	public void mostrarSociosPorDireccion(String direccion) {
+		ArrayList<Socio> socios = this.modeloSocio.selectPorDireccion(direccion);
+		this.formularioBusquedaSocio.rellenarTabla(socios);
+	}
+	
+	public void mostrarSociosPorPoblacion(String poblacion) {
+		ArrayList<Socio> socios = this.modeloSocio.selectPorPoblacion(poblacion);
+		this.formularioBusquedaSocio.rellenarTabla(socios);
+	}
+	
+	public void mostrarSociosPorProvincia(String provincia) {
+		ArrayList<Socio> socios = this.modeloSocio.selectPorProvincia(provincia);
+		this.formularioBusquedaSocio.rellenarTabla(socios);
+	}
+
 }
