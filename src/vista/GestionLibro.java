@@ -38,7 +38,7 @@ public class GestionLibro extends JDialog {
 		
 		super(parent,modal);
 		
-		setBounds(100, 100, 450, 300);
+		setBounds(650, 350, 450, 300);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 434, 261);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

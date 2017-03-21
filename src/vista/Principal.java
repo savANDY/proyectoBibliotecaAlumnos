@@ -74,13 +74,11 @@ public class Principal extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				controladorSocio = new ControladorSocio();
-
 				controladorSocio.abrirGestionSocio();
 
 			}
 		});
-		button.setBounds(29, 99, 157, 77);
+		button.setBounds(30, 100, 157, 77);
 
 		JButton button_1 = new JButton("Gestion Libros");
 		button_1.addActionListener(new ActionListener() {
