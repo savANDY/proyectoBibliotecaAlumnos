@@ -177,9 +177,7 @@ public class ControladorSocio {
 		socio.setProvincia(provincia);
 		socio.setDni(dni);
 		
-		this.modeloSocio.modificar(socio);
-		
-		
+		this.modeloSocio.modificar(socio);	
 	}
 
 }

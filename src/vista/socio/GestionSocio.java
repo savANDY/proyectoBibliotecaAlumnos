@@ -21,11 +21,8 @@ import javax.swing.SwingConstants;
 
 public class GestionSocio extends JDialog {
 
-
 	private final JPanel contentPanel = new JPanel();
 
-
-	
 	private ControladorSocio  controladorSocio;
 	private Component consultas;
 	private AbstractButton nuevo;
@@ -84,7 +81,6 @@ public class GestionSocio extends JDialog {
 				modificar.setBounds(25, 139, 189, 23);
 				contentPanel.add(modificar);
 			}
-			
 		}
 		
 		JLabel lblGestionDeSocios = new JLabel("GESTION DE SOCIOS");
