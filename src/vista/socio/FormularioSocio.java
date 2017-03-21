@@ -85,8 +85,6 @@ public class FormularioSocio extends JDialog {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controladorSocio.insertarSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
-				
-				//((SocioVentana) getParent()).addSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
 				controladorSocio.cerrarFormularioSocio();
 			}
 		});
@@ -164,14 +162,11 @@ public class FormularioSocio extends JDialog {
 	}
 
 	public void clear() {
-		
 		this.textNombre.setText("");
 		this.textApellido.setText("");
 		this.textDireccion.setText("");
 		this.textDni.setText("");
 		this.textPoblacion.setText("");
-		this.textProvincia.setText("");
-		
-		
+		this.textProvincia.setText("");	
 	}
 }
