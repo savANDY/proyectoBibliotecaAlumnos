@@ -121,10 +121,15 @@ public class ControladorSocio {
 	public void eliminarSocio(int idSocio) {
 			this.modeloSocio.borrar(idSocio);
 			this.formularioDeBorrado.mostrarMensaje("socio borrado");
+			this.formularioDeBorrado.clearForm();
+			
+			//formularioa eguneratu
+			ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
+			this.formularioDeBorrado.rellenarComboSocios(socios);
 	}
 
 	public void cerrarFormularioDeBorrado() {
-		this.formularioDeBorrado.clear();
+		this.formularioDeBorrado.clearForm();
 		this.formularioDeBorrado.dispose();
 	}
 	//borrado de socio FIN
