@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JScrollPane;
 
 public class FormularioDeBusquedaSocio extends JDialog {
@@ -222,6 +224,30 @@ public class FormularioDeBusquedaSocio extends JDialog {
 		table.setModel(dtm);
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(dtm);
 		table.setRowSorter(modeloOrdenado);
+		
+	}
+
+
+	public void rellenarComboDireccion(ArrayList<String> direcciones) {
+		for(String direccion: direcciones){
+			//TODO  no existe el comboDirecciones
+		}
+	}
+
+	
+	public void rellenarComboPoblacion(ArrayList<String> pueblos) {
+		for(String pueblo: pueblos){
+			this.comboPoblacion.addItem(pueblo);
+		}
+		this.comboPoblacion.setSelectedIndex(-1);
+	}
+
+	
+	public void rellenarComboProvincia(ArrayList<String> provincias) {
+		for(String provincia: provincias){
+			this.comboProvincias.addItem(provincia);
+		}
+		this.comboProvincias.setSelectedIndex(-1);
 		
 	}
 }

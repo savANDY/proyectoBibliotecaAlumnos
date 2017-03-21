@@ -89,6 +89,14 @@ public class ControladorSocio {
 	}
 	
 	public void abrirBusquedaSocio(){
+//		ArrayList<String> direcciones = this.modeloSocio.selectDirecciones();
+		ArrayList<String> pueblos = this.modeloSocio.selectPoblaciones();
+		ArrayList<String> provincias = this.modeloSocio.selectProvincias();
+		
+//		this.formularioBusquedaSocio.rellenarComboDireccion(direcciones);
+		this.formularioBusquedaSocio.rellenarComboPoblacion(pueblos);
+		this.formularioBusquedaSocio.rellenarComboProvincia(provincias);
+		
 		this.formularioBusquedaSocio.setVisible(true);
 		
 	}
