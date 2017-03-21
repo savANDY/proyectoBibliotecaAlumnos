@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ControladorLibro;
 import controlador.ControladorSocio;
 import modelo.Libro;
 import modelo.Socio;
@@ -22,20 +23,20 @@ import javax.swing.DefaultComboBoxModel;
 public class BorrarLibro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField txtAsd;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 
-	private ControladorSocio controladorSocio;
+	private ControladorLibro controladorLibro;
 	private JComboBox lista;
 
-	public ControladorSocio getControladorSocio() {
-		return controladorSocio;
+	public ControladorLibro getControladorLibro() {
+		return controladorLibro;
 	}
 
-	public void setControladorSocio(ControladorSocio controladorSocio) {
-		this.controladorSocio = controladorSocio;
+	public void setControladorLibro(ControladorLibro controladorLibro) {
+		this.controladorLibro = controladorLibro;
 	}
 
 	/**
@@ -58,11 +59,11 @@ public class BorrarLibro extends JDialog {
 			contentPanel.add(lista);
 		}
 		{
-			textField = new JTextField();
-			textField.setEditable(false);
-			textField.setColumns(10);
-			textField.setBounds(219, 73, 86, 20);
-			contentPanel.add(textField);
+			txtAsd = new JTextField();
+			txtAsd.setEditable(false);
+			txtAsd.setColumns(10);
+			txtAsd.setBounds(219, 73, 86, 20);
+			contentPanel.add(txtAsd);
 		}
 		{
 			JLabel label = new JLabel("Id Libro");
@@ -119,11 +120,18 @@ public class BorrarLibro extends JDialog {
 			Libro libro = iterator.next();
 			this.lista.addItem(libro.getId() + " " + libro.getTitulo());
 		}
-
 		// for (Libro libro:libros){
 		// this.lista.addItem(libro.getTitulo());
 		// }
 
+	}
+
+	public void rellenarCampos() {
+		String titulo_aux = lista.getSelectedItem().toString();
+		
+		controladorLibro.seleccionarPorTitulo(titulo_aux);
+		
+		txtAsd.setText("asd");
 	}
 
 }

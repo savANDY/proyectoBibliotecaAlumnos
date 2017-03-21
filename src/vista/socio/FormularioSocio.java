@@ -82,7 +82,7 @@ public class FormularioSocio extends JDialog {
 				
 				//((SocioVentana) getParent()).addSocio(textNombre.getText(), textApellido.getText(), textDireccion.getText(), textPoblacion.getText(), textProvincia.getText(), textDni.getText());
 				
-				dispose();
+				//dispose();
 			}
 		});
 		

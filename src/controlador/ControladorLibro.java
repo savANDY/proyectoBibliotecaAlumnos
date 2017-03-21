@@ -13,15 +13,12 @@ public class ControladorLibro {
 
 	// un atributo por cada ventana de libros-->5
 	// un atributo por cada Tabla de la BD--> 1
-
-	// vista
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
 	private ConsultarLibro consultarLibro;
 	private ListarLibros listarLibros;
 
-	// modelo
 	private ModeloLibro modeloLibro;
 
 	public ControladorLibro() {
@@ -45,6 +42,13 @@ public class ControladorLibro {
 			JOptionPane.showMessageDialog(null, "Error al insertar nuevo LIBRO");
 		}
 	}
+	
+	public void seleccionarPorTitulo(String titulo){
+		
+		
+		
+	}
+	
 
 	public GestionLibro getGestionLibro() {
 		return gestionLibro;
@@ -102,21 +106,16 @@ public class ControladorLibro {
 
 	public void abrirNuevoLibro() {
 
-		this.nuevoLibro.setVisible(true);
+		nuevoLibro.setVisible(true);
 
 	}
 
 	public void abrirBorrarLibro() {
-		try {
-			ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
+		ArrayList<Libro> libros = this.modeloLibro.seleccionarTodos();
 
-			this.borrarLibro.rellenarLista(libros);
-			this.borrarLibro = new BorrarLibro(gestionLibro, true);
-			this.borrarLibro.setVisible(true);
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error al seleccionar libros");
-		}
+		this.borrarLibro = new BorrarLibro(gestionLibro, true);
+		this.borrarLibro.rellenarLista(libros);
+		this.borrarLibro.setVisible(true);
 
 	}
 

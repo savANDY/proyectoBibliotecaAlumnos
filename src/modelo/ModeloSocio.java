@@ -48,14 +48,13 @@ public class ModeloSocio extends Conectar {
 
 		PreparedStatement pst;
 		try {
-			pst = cn.prepareStatement("INSERT INTO SOCIOS VALUES (?,?,?,?,?,?,?)");
-			pst.setInt(1, socio.getId());
-			pst.setString(2, socio.getNombre());
-			pst.setString(3, socio.getApellido());
-			pst.setString(4, socio.getDireccion());
-			pst.setString(5, socio.getPoblacion());
-			pst.setString(6, socio.getProvincia());
-			pst.setString(7, socio.getDni());
+			pst = cn.prepareStatement("INSERT INTO SOCIOS VALUES (?,?,?,?,?,?)");
+			pst.setString(1, socio.getNombre());
+			pst.setString(2, socio.getApellido());
+			pst.setString(3, socio.getDireccion());
+			pst.setString(4, socio.getPoblacion());
+			pst.setString(5, socio.getProvincia());
+			pst.setString(6, socio.getDni());
 
 			pst.execute();
 			System.out.println("Alumno insertado correctamente");
