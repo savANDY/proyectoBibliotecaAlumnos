@@ -11,6 +11,7 @@ import vista.Principal;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
+import vista.socio.FormularioTodosSocios;
 import vista.socio.GestionSocio;
 
 public class ControladorSocio {
@@ -26,6 +27,7 @@ public class ControladorSocio {
 	private FormularioSocio formularioSocio;
 	private FormularioDeBorrado formularioDeBorrado;
 	private FormularioDeModificado formDeModificado;
+	private FormularioTodosSocios formTodosSocios;
 
 
 
@@ -35,6 +37,10 @@ public class ControladorSocio {
 
 	public void setFormDeModificado(FormularioDeModificado formDeModificado) {
 		this.formDeModificado = formDeModificado;
+	}
+	
+	public void setFormTodosSocios(FormularioTodosSocios formTodosSocios) {
+		this.formTodosSocios = formTodosSocios;
 	}
 
 	/**
@@ -91,6 +97,13 @@ public class ControladorSocio {
 
 		this.formDeModificado.rellenarComboSocios(socios);
 		this.formDeModificado.setVisible(true);
+	}
+	
+	public void abrirFormListar() {
+		ArrayList<Socio> socios = this.modeloSocio.seleccionarTodos();
+
+		//this.formTodosSocios.rellenarComboSocios(socios);
+		this.formTodosSocios.setVisible(true);
 	}
 	
 	public void rellenarFormDeBorrado(int idSocio) {

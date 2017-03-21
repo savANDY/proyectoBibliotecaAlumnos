@@ -88,5 +88,20 @@ public class GestionSocio extends JDialog {
 		lblGestionDeSocios.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblGestionDeSocios.setBounds(89, 25, 275, 23);
 		contentPanel.add(lblGestionDeSocios);
+		
+		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setBounds(25, 173, 189, 23);
+		contentPanel.add(btnBuscar);
+		
+		JButton btnListarSocios = new JButton("LISTAR SOCIOS");
+		btnListarSocios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				controladorSocio.abrirFormListar();
+			}
+		});
+		btnListarSocios.setBounds(25, 207, 189, 23);
+		contentPanel.add(btnListarSocios);
 	}
+
 }

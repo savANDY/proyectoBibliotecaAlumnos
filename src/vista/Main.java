@@ -14,6 +14,7 @@ import vista.libro.NuevoLibro;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
+import vista.socio.FormularioTodosSocios;
 import vista.socio.GestionSocio;
 
 public class Main {
@@ -77,6 +78,9 @@ public class Main {
 		FormularioDeModificado formularioDeModificado = new FormularioDeModificado(gestionSocio, true);
 		formularioDeModificado.setControladorSocio(controladorSocio);
 		
+		FormularioTodosSocios formularioTodosSocios = new FormularioTodosSocios(gestionSocio, true);
+		formularioTodosSocios.setControladorSocio(controladorSocio);
+		
 		
 		//rellenar controladorSocio
 		controladorSocio.setModeloSocio(modeloSocio);
@@ -84,6 +88,7 @@ public class Main {
 		controladorSocio.setFormularioDeBorrado(formularioDeBorrado);
 		controladorSocio.setFormularioSocio(formularioSocio);
 		controladorSocio.setFormDeModificado(formularioDeModificado);
+		controladorSocio.setFormTodosSocios(formularioTodosSocios);
 		
 		//abrir la ventana principal
 		principal.setVisible(true);
