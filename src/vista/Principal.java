@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -61,67 +62,65 @@ public class Principal extends JFrame {
 
 
 	public Principal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/imagenes/book-2869_1280.jpg")));
+		setTitle("Gestion Biblioteca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu menuLibros = new JMenu("Gestion Libros");
-		menuBar.add(menuLibros);
-		
-		JMenu menuSocios = new JMenu("Gestion Socios");
-		menuBar.add(menuSocios);
-		
-		JMenu menuPrestamos = new JMenu("Prestamos");
-		menuBar.add(menuPrestamos);
+		setBounds(600, 300, 390, 325);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton prestamos = new JButton("PRESTAMOS");
-		prestamos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//controladorPrestamo.abrirGestionPrestamo();
 
-			}
-		});
-		prestamos.setBounds(40, 190, 168, 23);
-		contentPane.add(prestamos);
-		
-		JButton socios = new JButton("GESTION SOCIOS");
-		socios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton button = new JButton("Gestion Socios");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				controladorSocio = new ControladorSocio();
 
 				controladorSocio.abrirGestionSocio();
 
 			}
 		});
-		socios.setBounds(40, 109, 168, 23);
-		contentPane.add(socios);
-		
-		JButton libros = new JButton("GESTION LIBROS");
-		libros.addActionListener(new ActionListener() {
+		button.setBounds(29, 99, 157, 77);
+
+		JButton button_1 = new JButton("Gestion Libros");
+		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				controladorLibro.abrirGestionLibro();
-				
+
 			}
 		});
-		libros.setBounds(40, 48, 168, 23);
-		contentPane.add(libros);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/book-2869_1280.jpg")));
-		lblNewLabel.setBounds(234, 51, 190, 199);
-		contentPane.add(lblNewLabel);
-		
-		JLabel titulo = new JLabel("ZORNOTZAko UDAL LIBURUTEGIA");
-		titulo.setFont(new Font("Tahoma", Font.BOLD, 18));
-		titulo.setBounds(40, 11, 366, 26);
-		contentPane.add(titulo);
+		button_1.setBounds(196, 11, 157, 77);
+
+		JButton btnPrestamos = new JButton("Prestamos");
+		btnPrestamos.setBounds(196, 187, 157, 77);
+		btnPrestamos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				controladorPrestamo = new ControladorPrestamo();
+
+				//controladorPrestamo.abrirGestionPrestamo();
+
+			}
+		});
+		contentPane.setLayout(null);
+		contentPane.add(btnPrestamos);
+		contentPane.add(button_1);
+		contentPane.add(button);
+
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/prestamos.jpg")));
+		label.setBounds(29, 187, 157, 77);
+		contentPane.add(label);
+
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/libros.jpg")));
+		label_1.setBounds(29, 11, 157, 77);
+		contentPane.add(label_1);
+
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Principal.class.getResource("/imagenes/socios.jpg")));
+		label_2.setBounds(196, 99, 157, 77);
+		contentPane.add(label_2);
 	}
 }
