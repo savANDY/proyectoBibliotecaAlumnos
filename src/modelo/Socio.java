@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Socio {
 
 	private int id;
@@ -9,6 +11,24 @@ public class Socio {
 	private String poblacion;
 	private String provincia;
 	private String dni;
+	
+	private ArrayList<Prestamo> prestamos;
+	
+	public Socio(){
+		
+	}
+	
+	public Socio(int id, String nombre, String apellido, String direccion, String poblacion, String provincia,
+			String dni) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.poblacion = poblacion;
+		this.provincia = provincia;
+		this.dni = dni;
+	}
 
 	public int getId() {
 		return id;
@@ -65,21 +85,13 @@ public class Socio {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
-	public Socio(int id, String nombre, String apellido, String direccion, String poblacion, String provincia,
-			String dni) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.poblacion = poblacion;
-		this.provincia = provincia;
-		this.dni = dni;
+	
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
 	}
 
-	public Socio() {
-		super();
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
 	}
 
 }
