@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -30,11 +31,29 @@ public class ModeloLibro extends Conectar {
 		}
 		return libros;
 	}
-	
-	public ArrayList<Libro> seleccionarNoPrestados(){
-		return null;
-		//TODO egiteko dago
-		
+
+	public ArrayList<Libro> seleccionarNoPrestados() {
+		PreparedStatement pst;
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		try {
+			pst = super.cn.prepareStatement(
+					"select libros.* from libros where id not in (select libros.id from libros join prestamos on libros.id = prestamos.id_libro and (prestamos.devuelto = ?))");
+			pst.setBoolean(1, false);
+			ResultSet rs = pst.executeQuery();
+
+			Libro libro;
+			while (rs.next()) {
+				libro = new Libro();
+				libro.setId(rs.getInt("id"));
+				libros.add(libro);
+			}
+			return libros;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return libros;
+		// TODO egiteko dago
+
 	}
 
 	public void insertar(Libro libro) throws SQLException {
@@ -43,14 +62,14 @@ public class ModeloLibro extends Conectar {
 
 			PreparedStatement pst = cn.prepareStatement("INSERT INTO LIBROS (titulo, autor, num_pag) VALUES (?,?,?)");
 
-//			System.out.println(pst);
+			// System.out.println(pst);
 
 			pst.setString(1, libro.getTitulo());
 			pst.setString(2, libro.getAutor());
 			pst.setInt(3, libro.getNum_pag());
 
 			pst.execute();// ejecuta
-//			System.out.println("Libro insertado correctamente");
+			// System.out.println("Libro insertado correctamente");
 		} catch (SQLException ex) {
 			throw ex;
 
@@ -64,9 +83,9 @@ public class ModeloLibro extends Conectar {
 			pst.execute();// ejecuta
 
 			if (pst.getUpdateCount() == 0) {// no a borrado nada
-//				System.out.println("Libro no existe");
+				// System.out.println("Libro no existe");
 			} else {
-//				System.out.println("Libro borrado correctamente");
+				// System.out.println("Libro borrado correctamente");
 			}
 
 		} catch (SQLException ex) {
@@ -149,7 +168,7 @@ public class ModeloLibro extends Conectar {
 			pst.setString(1, titulo);
 
 			int count = pst.executeUpdate();
-//			System.out.println(pst + "  " + count);
+			// System.out.println(pst + " " + count);
 
 			if (count >= 1) {
 				JOptionPane.showMessageDialog(null, "LIBRO BORRADO");
