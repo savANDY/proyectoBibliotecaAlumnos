@@ -70,9 +70,7 @@ public class FormularioTodosSocios extends JDialog {
 	public void rellenarTabla(ArrayList<Socio> socios) {
 		
 		DefaultTableModel dtm=new DefaultTableModel();
-		
 		String[] cabeceras={"NOMBRE","APELLIDOS","POBLACION"};
-		
 		dtm.setColumnIdentifiers(cabeceras);
 		
 		for (Socio socio:socios){
@@ -83,8 +81,8 @@ public class FormularioTodosSocios extends JDialog {
 			
 			dtm.addRow(fila);
 		}
-		
 		tabla.setModel(dtm);
+		//para poder ordenar por las cabeceras
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(dtm);
 		tabla.setRowSorter(modeloOrdenado);
 	}

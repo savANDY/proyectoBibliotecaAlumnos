@@ -125,6 +125,8 @@ public class BorrarLibro extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				controladorLibro.borrarLibro((String)lista.getSelectedItem());
+				lista.setSelectedIndex(0);
+				controladorLibro.abrirBorrarLibro();
 				
 			}
 		});
@@ -134,6 +136,8 @@ public class BorrarLibro extends JDialog {
 	}
 
 	public void rellenarLista(ArrayList<Libro> libros) {
+		
+		lista.removeAllItems();
 		
 		for (Libro libro:libros){
 			
