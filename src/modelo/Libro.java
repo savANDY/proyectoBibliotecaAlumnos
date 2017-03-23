@@ -1,11 +1,14 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Libro {
 
 	private int id;
 	private String titulo;
 	private String autor;
 	private int num_pag;
+	private ArrayList<Prestamo> prestamos;
 
 	public int getId() {
 		return id;
@@ -39,6 +42,15 @@ public class Libro {
 		this.num_pag = num_pag;
 	}
 
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
+
+	
 	public Libro(int id, String titulo, String autor, int num_pag) {
 		super();
 		this.id = id;
