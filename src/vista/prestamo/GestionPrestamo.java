@@ -7,30 +7,33 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorPrestamo;
+import vista.Principal;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GestorPrestamo extends JDialog {
+public class GestionPrestamo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private ControladorPrestamo controladorPrestamo;
+	private FormularioPrestamo formulacionPrestamo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			GestorPrestamo dialog = new GestorPrestamo();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public ControladorPrestamo getControladorPrestamo() {
+		return controladorPrestamo;
 	}
 
+	public void setControladorPrestamo(ControladorPrestamo controladorPrestamo) {
+		this.controladorPrestamo = controladorPrestamo;
+	}
+
+		
 	/**
 	 * Create the dialog.
 	 */
-	public GestorPrestamo() {
+	public GestionPrestamo(Principal principal, boolean modal) {
+		super(principal,true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -40,6 +43,9 @@ public class GestorPrestamo extends JDialog {
 		JButton btnNewButton = new JButton("Realizar Prestamo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				controladorPrestamo.abrirFormularioPrestamo();
+				
 			}
 		});
 		btnNewButton.setBounds(35, 50, 142, 23);
