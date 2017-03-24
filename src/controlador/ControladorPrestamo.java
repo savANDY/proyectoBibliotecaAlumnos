@@ -1,7 +1,13 @@
 package controlador;
 
 
+import java.util.ArrayList;
+
+import modelo.Libro;
+import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
+import modelo.ModeloSocio;
+import modelo.Socio;
 import vista.Principal;
 import vista.prestamo.FormularioPrestamo;
 import vista.prestamo.GestionPrestamo;
@@ -9,10 +15,13 @@ import vista.prestamo.GestionPrestamo;
 
 public class ControladorPrestamo {
 
-	private ModeloPrestamo modeloPrestamo;
+	private Principal principal;
 	private GestionPrestamo gestionPrestamo;
 	private FormularioPrestamo formularioPrestamo;
-	private Principal principal;
+	private ModeloSocio modeloSocio;
+	private ModeloLibro modeloLibro;
+	private ModeloPrestamo modeloPrestamo;
+	
 	
 	public GestionPrestamo getGestorPrestamo() {
 		return gestionPrestamo;
@@ -66,7 +75,33 @@ public class ControladorPrestamo {
 	}
 	
 	public void abrirFormularioPrestamo() {
+		//lortu socio guztiak
+		ArrayList<Socio> socios=this.modeloSocio.seleccionarTodos();
+		//Bete socioen comboa
+		this.formularioPrestamo.rellenarComboSocio(socios);
+		//Prestamo gabeko liburuak
+		ArrayList<Libro> libros= this.modeloLibro.seleccionarNoPrestados();
+		//Bete liburuen comboa
+		this.formularioPrestamo.rellenarComboLibros(libros);
+		
 		this.formularioPrestamo.setVisible(true);
+		
+	}
+
+	public ModeloSocio getModeloSocio() {
+		return modeloSocio;
+	}
+
+	public void setModeloSocio(ModeloSocio modeloSocio) {
+		this.modeloSocio = modeloSocio;
+	}
+
+	public ModeloLibro getModeloLibro() {
+		return modeloLibro;
+	}
+
+	public void setModeloLibro(ModeloLibro modeloLibro) {
+		this.modeloLibro = modeloLibro;
 	}
 	
 	

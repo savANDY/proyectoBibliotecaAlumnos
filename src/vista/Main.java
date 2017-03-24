@@ -90,7 +90,9 @@ public class Main {
 		formularioPrestamo.setControladorPrestamo(controladorPrestamo);
 		
 		controladorPrestamo.setFormularioPrestamo(formularioPrestamo);
-		
+		controladorPrestamo.setModeloLibro(modeloLibro);
+		controladorPrestamo.setModeloSocio(modeloSocio);
+		controladorPrestamo.setModeloPrestamo(modeloPrestamo);
 		
 		
 		

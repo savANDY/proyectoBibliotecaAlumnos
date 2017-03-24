@@ -45,6 +45,9 @@ public class ModeloLibro extends Conectar {
 			while (rs.next()) {
 				libro = new Libro();
 				libro.setId(rs.getInt("id"));
+				libro.setTitulo(rs.getString("titulo"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
 				libros.add(libro);
 			}
 			return libros;

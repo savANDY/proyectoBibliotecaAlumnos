@@ -9,17 +9,22 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorPrestamo;
+import modelo.Libro;
+import modelo.Socio;
 import vista.Principal;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class FormularioPrestamo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private ControladorPrestamo controladorPrestamo;
+	private JComboBox comboBoxSocios;
+	private JComboBox comboBoxLibros;
 
 
 	public ControladorPrestamo getControladorPrestamo() {
@@ -41,7 +46,7 @@ public class FormularioPrestamo extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JComboBox comboBoxLibros = new JComboBox();
+		comboBoxLibros = new JComboBox();
 		comboBoxLibros.setEditable(true);
 		comboBoxLibros.setBounds(141, 64, 131, 20);
 		contentPanel.add(comboBoxLibros);
@@ -54,7 +59,7 @@ public class FormularioPrestamo extends JDialog {
 		lblSocios.setBounds(31, 122, 46, 14);
 		contentPanel.add(lblSocios);
 		
-		JComboBox comboBoxSocios = new JComboBox();
+		comboBoxSocios = new JComboBox();
 		comboBoxSocios.setEditable(true);
 		comboBoxSocios.setBounds(145, 119, 127, 20);
 		contentPanel.add(comboBoxSocios);
@@ -81,6 +86,20 @@ public class FormularioPrestamo extends JDialog {
 				buttonCancelar.setActionCommand("Cancel");
 				buttonPane.add(buttonCancelar);
 			}
+		}
+	}
+
+	public void rellenarComboSocio(ArrayList<Socio> socios) {
+		
+		for (Socio socio:socios){
+			this.comboBoxSocios.addItem(socio.getId() + ":" + socio.getNombre() + " " + socio.getApellido());
+		}
+	}
+
+	public void rellenarComboLibros(ArrayList<Libro> libros) {
+		
+		for (Libro libro:libros){
+			this.comboBoxLibros.addItem(libro.getId() + ":" + libro.getTitulo());
 		}
 	}
 }
