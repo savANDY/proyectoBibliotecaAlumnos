@@ -21,6 +21,7 @@ public class FormularioPrestamo extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private ControladorPrestamo controladorPrestamo;
 
+
 	public ControladorPrestamo getControladorPrestamo() {
 		return controladorPrestamo;
 	}
