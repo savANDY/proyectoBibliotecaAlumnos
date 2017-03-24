@@ -214,14 +214,23 @@ public class FormularioDeBusquedaSocio extends JDialog {
 	}
 
 	public void rellenarTabla(ArrayList<Socio> socios) {
+		//table model bat sortu
 		DefaultTableModel dtm = new DefaultTableModel();
 
-		dtm.setColumnIdentifiers(new Object[] { "NOMBRE", "APELLIDO", "DIRECCION", "POBLACION", "PROVINCIA", "DNI"});
+		//burukoen izenak jarri 
+		Object[] burukoak = {"NOMBRE", "APELLIDO", "DIRECCION", "POBLACION", "PROVINCIA", "DNI"};
+		dtm.setColumnIdentifiers(burukoak );
 
+		//tablemodela bete
 		for (Socio socio : socios) {
-			dtm.addRow(new Object[] { socio.getNombre(), socio.getApellido(), socio.getDireccion(), socio.getPoblacion(), socio.getProvincia(), socio.getDni()});
+			Object[] lerroa = { socio.getNombre(), socio.getApellido(), socio.getDireccion(), socio.getPoblacion(), socio.getProvincia(), socio.getDni()};
+			dtm.addRow(lerroa);
 		}
+		
+		//tablemodela taulari asignatu
 		table.setModel(dtm);
+		
+		//taula ordenagarria sortu
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(dtm);
 		table.setRowSorter(modeloOrdenado);
 		
