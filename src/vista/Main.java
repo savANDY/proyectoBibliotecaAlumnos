@@ -7,6 +7,8 @@ import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
 import vista.socio.FormularioDeBusquedaSocio;
+import vista.prestamo.FormularioPrestamo;
+import vista.prestamo.GestionPrestamo;
 import vista.socio.FormularioDeBorrado;
 import vista.socio.FormularioDeModificado;
 import vista.socio.FormularioSocio;
@@ -79,6 +81,20 @@ public class Main {
 		FormularioTodosSocios formularioTodosSocios = new FormularioTodosSocios(gestionSocio, true);
 		formularioTodosSocios.setControladorSocio(controladorSocio);
 		
+		//PRESTAMO
+		// Crear ventanas como variables locales del main
+		GestionPrestamo gestionPrestamo = new GestionPrestamo(principal, true);
+		gestionPrestamo.setControladorPrestamo(controladorPrestamo);
+		
+		FormularioPrestamo formularioPrestamo = new FormularioPrestamo(gestionPrestamo,true);
+		formularioPrestamo.setControladorPrestamo(controladorPrestamo);
+		
+		controladorPrestamo.setFormularioPrestamo(formularioPrestamo);
+		controladorPrestamo.setModeloLibro(modeloLibro);
+		controladorPrestamo.setModeloSocio(modeloSocio);
+		controladorPrestamo.setModeloPrestamo(modeloPrestamo);
+		
+		
 		
 		//rellenar controladorSocio
 		controladorSocio.setModeloSocio(modeloSocio);
@@ -87,8 +103,14 @@ public class Main {
 		controladorSocio.setFormularioSocio(formularioSocio);
 		controladorSocio.setFormDeModificado(formularioDeModificado);
 		controladorSocio.setFormTodosSocios(formularioTodosSocios);
+		
 		//prueba de formulario de busqueda
 		controladorSocio.setFormularioBusquedaSocio(formularioDeBusqueda);
+		
+		//rellenar controladorPrestamo
+		controladorPrestamo.setModeloPrestamo(modeloPrestamo);
+		controladorPrestamo.setGestorPrestamo(gestionPrestamo);
+		
 		
 		//abrir la ventana principal
 		principal.setVisible(true);

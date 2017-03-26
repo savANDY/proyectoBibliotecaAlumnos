@@ -85,7 +85,7 @@ public class Principal extends JFrame {
 		prestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//controladorPrestamo.abrirGestionPrestamo();
+				controladorPrestamo.abrirGestionPrestamo();
 
 			}
 		});

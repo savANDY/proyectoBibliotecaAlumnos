@@ -10,7 +10,10 @@ public class Prestamo {
 	private int id_socio;
 	private Date fecha;
 	private boolean devuelto;
+	private Socio socio;
+	private Libro libro;
 
+	
 	public int getId_libro() {
 		return id_libro;
 	}
@@ -43,6 +46,23 @@ public class Prestamo {
 	public void setDevuelto(boolean devuelto) {
 		this.devuelto = devuelto;
 	}
+	
+	public Socio getSocio() {
+		return socio;
+	}
+
+	public void setSocio(Socio socio) {
+		this.socio = socio;
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
+
 
 	public Prestamo(int id_libro, int id_socio, Date fecha, boolean devuelto) {
 		super();
