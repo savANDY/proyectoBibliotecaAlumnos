@@ -11,11 +11,6 @@ import javax.swing.JOptionPane;
 
 public class ModeloLibro extends Conectar {
 	
-	
-	
-	
-	Scanner scan = new Scanner(System.in);
-
 	public ModeloLibro() {
 		super();
 	}
@@ -58,10 +53,7 @@ public class ModeloLibro extends Conectar {
 
 	public void borrar(int id) throws Exception {
 		try {
-			System.out.println("\n\t\tBorrar libro por id");
-			System.out.println("\t\tId: ");
-			id = (Integer.parseInt(scan.nextLine()));
-
+			
 			PreparedStatement pst = cn.prepareStatement("DELETE FROM libros WHERE id = ?");
 			pst.setInt(1, id);
 			pst.execute();// ejecuta
