@@ -44,11 +44,11 @@ public class Main {
 		BorrarLibro borrarLibro = new BorrarLibro(gestionLibro, true);
 		borrarLibro.setControladorLibro(controladorLibro);
 		
-		ConsultarLibro consultarLibro = new ConsultarLibro(gestionLibro, true);
-		//consultarLibro.setControladorLibro(controladorLibro);
-		
 		ListarLibros listarLibros = new ListarLibros(gestionLibro, true);
-		//listarLibros.setControladorLibro(controladorLibro);
+		listarLibros.setControladorLibro(controladorLibro);
+		
+		ConsultarLibro consultarLibro = new ConsultarLibro(gestionLibro, true);
+		consultarLibro.setControladorLibro(controladorLibro);
 		
 		
 		controladorLibro.setNuevoLibro(nuevoLibro);

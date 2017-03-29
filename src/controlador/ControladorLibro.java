@@ -17,8 +17,8 @@ public class ControladorLibro {
 	private GestionLibro gestionLibro;
 	private NuevoLibro nuevoLibro;
 	private BorrarLibro borrarLibro;
-	private ConsultarLibro consultarLibro;
-	private ListarLibros  listarLibros;
+	private ListarLibros listarLibros;
+	private ConsultarLibro  consultarLibro;
 
 	private ModeloLibro modeloLibro;
 
@@ -69,21 +69,27 @@ public class ControladorLibro {
 		this.borrarLibro = borrarLibro;
 	}
 
-	public ConsultarLibro getConsultarLibro() {
-		return consultarLibro;
-	}
-
-	public void setConsultarLibro(ConsultarLibro consultarLibro) {
-		this.consultarLibro = consultarLibro;
-	}
+	
 
 	public ListarLibros getListarLibros() {
 		return listarLibros;
 	}
 
+
 	public void setListarLibros(ListarLibros listarLibros) {
 		this.listarLibros = listarLibros;
 	}
+
+
+	public ConsultarLibro getConsultarLibro() {
+		return consultarLibro;
+	}
+
+
+	public void setConsultarLibro(ConsultarLibro consultarLibro) {
+		this.consultarLibro = consultarLibro;
+	}
+
 
 	public ModeloLibro getModeloLibro() {
 		return modeloLibro;
@@ -129,7 +135,7 @@ public class ControladorLibro {
 		ArrayList<Libro> libros;
 		try {
 			libros = modeloLibro.seleccionarTodos();
-			consultarLibro.rellenarTabla(libros);
+			//consultarLibro.rellenarTabla(libros);
 
 			consultarLibro.setVisible(true);
 		
@@ -140,6 +146,17 @@ public class ControladorLibro {
 		
 	}
 	public void abrirListarLibros() {
+		
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+
+		try {
+			libros=modeloLibro.seleccionarTodos();
+			
+			listarLibros.rellenarTabla(libros);
+	
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBROS");
+		}
 
 		listarLibros.setVisible(true);
 		
