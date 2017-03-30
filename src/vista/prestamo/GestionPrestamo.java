@@ -5,11 +5,12 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorPrestamo;
-import vista.Principal;
+import vista.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -32,7 +33,7 @@ public class GestionPrestamo extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionPrestamo(Principal principal, boolean modal) {
+	public GestionPrestamo(JFrame principal, boolean modal) {
 		super(principal,true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());

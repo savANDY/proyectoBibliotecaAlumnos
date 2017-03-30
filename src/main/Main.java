@@ -1,18 +1,12 @@
-package vista;
+package main;
 
-import controlador.ControladorLibro;
-import controlador.ControladorPrestamo;
-import controlador.ControladorSocio;
-import modelo.ModeloLibro;
-import modelo.ModeloPrestamo;
-import modelo.ModeloSocio;
-import vista.socio.FormularioDeBusquedaSocio;
-import vista.prestamo.FormularioPrestamo;
-import vista.prestamo.GestionPrestamo;
-import vista.socio.FormularioDeBorrado;
-import vista.socio.FormularioDeModificado;
-import vista.socio.FormularioSocio;
-import vista.socio.GestionSocio;
+import controlador.*;
+import modelo.*;
+import vista.*;
+import vista.libro.*;
+import vista.prestamo.*;
+import vista.socio.*;
+
 
 public class Main {
 

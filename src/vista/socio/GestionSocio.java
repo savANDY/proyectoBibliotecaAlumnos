@@ -7,11 +7,12 @@ import java.awt.FlowLayout;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ControladorSocio;
-import vista.Principal;
+import vista.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -44,7 +45,7 @@ public class GestionSocio extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionSocio(Principal principal, boolean modal) {
+	public GestionSocio(JFrame principal, boolean modal) {
 		super(principal, modal);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);

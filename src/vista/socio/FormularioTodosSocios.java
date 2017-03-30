@@ -1,4 +1,4 @@
-package vista;
+package vista.socio;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -53,7 +53,7 @@ public class FormularioTodosSocios extends JDialog {
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
 		
-		JLabel lblConsultasDeSocios = new JLabel("CONSULTAS DE SOCIOS");
+		JLabel lblConsultasDeSocios = new JLabel("LISTADO DE SOCIOS");
 		lblConsultasDeSocios.setBounds(110, 29, 300, 14);
 		lblConsultasDeSocios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultasDeSocios.setFont(new Font("Tahoma", Font.BOLD, 18));

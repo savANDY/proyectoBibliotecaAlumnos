@@ -160,6 +160,30 @@ public class ModeloLibro extends Conectar {
 
 		}
 	}
+	public Libro seleccionarDatosTitulo(String titulo) throws Exception {
+		PreparedStatement pst;
+		Libro libro = new Libro();
+
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS WHERE titulo=?");
+			pst.setString(1, titulo);
+
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			while (rs.next()) { // coge el titulo que es UNO SOLO
+
+				libro.setId(rs.getInt(1));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(rs.getInt(4));
+			}
+			return libro;
+
+		} catch (Exception e) {
+			throw e;
+
+		}
+	}
 
 	public void borrarLibro(String titulo) throws Exception {
 
@@ -203,7 +227,58 @@ public class ModeloLibro extends Conectar {
 				libro.setTitulo(rs.getString(2));
 				libro.setAutor(rs.getString(3));
 				libro.setNum_pag(Integer.parseInt(rs.getString(4)));
-				// System.out.println(libro.getTitulo());
+				
+				libros.add(libro);
+			}
+			return libros;
+
+		} catch (Exception e) {
+			throw e;
+
+		}
+	}
+	public ArrayList<String> seleccionarAutores() throws Exception {
+		PreparedStatement pst;
+		String autor;
+
+		try {
+			pst = cn.prepareStatement("SELECT DISTINCT  AUTOR FROM LIBROS ");
+
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			// pasar de ResultSet a ArrayList
+
+			ArrayList<String> autores = new ArrayList<String>();
+			while (rs.next()) {
+				
+				autor=rs.getString(1);
+				autores.add(autor);
+			}
+			return autores;
+
+		} catch (Exception e) {
+			throw e;
+
+		}
+	}
+	
+	public ArrayList<Libro> seleccionarDatosLibroAutor(String autor) throws Exception {
+		PreparedStatement pst;
+		Libro libro = new Libro();
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		try {
+			pst = cn.prepareStatement("SELECT * FROM LIBROS WHERE autor=?");
+			pst.setString(1, autor);
+
+			ResultSet rs = pst.executeQuery();// ejecuta
+
+			while (rs.next()) { // coge el titulo que es UNO SOLO
+
+				libro.setId(rs.getInt(1));
+				libro.setTitulo(rs.getString(2));
+				libro.setAutor(rs.getString(3));
+				libro.setNum_pag(rs.getInt(4));
+				
 				libros.add(libro);
 			}
 			return libros;

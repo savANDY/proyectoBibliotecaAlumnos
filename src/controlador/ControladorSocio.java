@@ -7,13 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import modelo.ModeloSocio;
-import vista.FormularioTodosSocios;
-import vista.Principal;
-import vista.socio.FormularioDeBusquedaSocio;
-import vista.socio.FormularioDeBorrado;
-import vista.socio.FormularioDeModificado;
-import vista.socio.FormularioSocio;
-import vista.socio.GestionSocio;
+import vista.*;
+import vista.socio.*;
 
 public class ControladorSocio {
 

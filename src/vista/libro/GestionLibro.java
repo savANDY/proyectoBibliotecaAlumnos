@@ -1,4 +1,4 @@
-package vista;
+package vista.libro;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -34,7 +34,7 @@ public class GestionLibro extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public GestionLibro(Principal parent, boolean modal) {
+	public GestionLibro(JFrame parent, boolean modal) {
 		
 		super(parent,modal);
 		

@@ -1,6 +1,11 @@
 package controlador;
 
 import vista.*;
+import vista.libro.BorrarLibro;
+import vista.libro.ConsultarLibro;
+import vista.libro.GestionLibro;
+import vista.libro.ListarLibros;
+import vista.libro.NuevoLibro;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -133,9 +138,12 @@ public class ControladorLibro {
 	public void abrirConsultarLibro() {
 		
 		ArrayList<Libro> libros;
+		ArrayList<String> autores;
 		try {
+			autores = modeloLibro.seleccionarAutores();
+			consultarLibro.rellenarListaAutores(autores);
 			libros = modeloLibro.seleccionarTodos();
-			//consultarLibro.rellenarTabla(libros);
+			consultarLibro.rellenarListaTitulos(libros);
 
 			consultarLibro.setVisible(true);
 		
@@ -182,6 +190,18 @@ public class ControladorLibro {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "ERROR AL BORRAR LIBRO");
 		
+		}
+		
+	}
+
+
+	public void seleccionarLibrosPorAutor(String autor) {
+		ArrayList<Libro> libros=new ArrayList<Libro>();
+		try {
+			libros=modeloLibro.seleccionarDatosLibroAutor(autor);
+			consultarLibro.rellenarTablaPorAutor(libros);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR AL SELECCIONAR LIBROS");
 		}
 		
 	}

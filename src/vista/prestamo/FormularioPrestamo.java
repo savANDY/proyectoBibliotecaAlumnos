@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import controlador.ControladorPrestamo;
 import modelo.Libro;
 import modelo.Socio;
-import vista.Principal;
+import vista.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;

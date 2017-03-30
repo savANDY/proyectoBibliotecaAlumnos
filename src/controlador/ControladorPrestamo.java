@@ -8,7 +8,7 @@ import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
 import modelo.Socio;
-import vista.Principal;
+import vista.*;
 import vista.prestamo.FormularioPrestamo;
 import vista.prestamo.GestionPrestamo;
 
