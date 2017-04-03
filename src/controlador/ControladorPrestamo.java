@@ -103,6 +103,10 @@ public class ControladorPrestamo {
 	public void setModeloLibro(ModeloLibro modeloLibro) {
 		this.modeloLibro = modeloLibro;
 	}
+
+	public void prestar(int libro, int socio) throws Exception {
+		
+		modeloPrestamo.prestar(libro, socio);
 	
-	
+	}
 }
