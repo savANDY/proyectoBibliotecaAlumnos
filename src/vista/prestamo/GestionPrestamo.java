@@ -20,6 +20,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.UIManager;
@@ -27,6 +30,8 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
+import java.awt.Font;
 
 public class GestionPrestamo extends JDialog {
 
@@ -49,6 +54,7 @@ public class GestionPrestamo extends JDialog {
 	public GestionPrestamo(JFrame principal, boolean modal) {
 		super(principal, true);
 		setBounds(100, 100, 500, 500);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -85,12 +91,22 @@ public class GestionPrestamo extends JDialog {
 				JButton btnBorrarSeleccionado = new JButton("Borrar Seleccionado");
 				
 				JButton btnBorrarOtros = new JButton("Borrar otros");
+				btnBorrarOtros.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						controladorPrestamo.abrirBorrarPrestamo();
+						
+					}
+				});
 				
 				JButton btnLibroDevuelto = new JButton("Libro devuelto");
 				
 				JButton btnListarPrestamos = new JButton("Listar Prestamos");
 				btnListarPrestamos.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						
+						controladorPrestamo.abrirListarPrestamos();
+						
 					}
 				});
 				GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -136,6 +152,23 @@ public class GestionPrestamo extends JDialog {
 
 				tabla = new JTable();
 				scrollPane.setViewportView(tabla);
+				
+				
+				
+				JTextPane txtpnMensajesVentana = new JTextPane();
+				
+				SimpleAttributeSet attribs = new SimpleAttributeSet();  
+				StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);  
+				txtpnMensajesVentana.setParagraphAttributes(attribs,true);
+				
+				txtpnMensajesVentana.setFont(new Font("Tahoma", Font.BOLD, 11));
+				txtpnMensajesVentana.setOpaque(false);
+				txtpnMensajesVentana.setEditable(false);
+				txtpnMensajesVentana.setText("Elige una opci\u00F3n:");
+				txtpnMensajesVentana.setBounds(10, 160, 463, 20);
+				
+				contentPanel.add(txtpnMensajesVentana);
+				
 				
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {

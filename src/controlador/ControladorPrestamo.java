@@ -11,8 +11,10 @@ import modelo.ModeloSocio;
 import modelo.Prestamo;
 import modelo.Socio;
 import vista.*;
+import vista.prestamo.BorrarPrestamo;
 import vista.prestamo.FormularioPrestamo;
 import vista.prestamo.GestionPrestamo;
+import vista.prestamo.ListarPrestamos;
 
 public class ControladorPrestamo {
 
@@ -22,6 +24,8 @@ public class ControladorPrestamo {
 	private ModeloSocio modeloSocio;
 	private ModeloLibro modeloLibro;
 	private ModeloPrestamo modeloPrestamo;
+	private BorrarPrestamo borrarPrestamo;
+	private ListarPrestamos listarPrestamos;
 
 	public GestionPrestamo getGestorPrestamo() {
 		return gestionPrestamo;
@@ -62,7 +66,18 @@ public class ControladorPrestamo {
 	public void setFormularioPrestamo(FormularioPrestamo formularioPrestamo) {
 		this.formularioPrestamo = formularioPrestamo;
 	}
+	
 
+	public ListarPrestamos getListarPrestamos() {
+		return listarPrestamos;
+	}
+
+	public void setListarPrestamos(ListarPrestamos listarPrestamos) {
+		this.listarPrestamos = listarPrestamos;
+	}
+
+	
+	// Constructor
 	public ControladorPrestamo() {
 		super();
 
@@ -103,6 +118,18 @@ public class ControladorPrestamo {
 		// formTodosSocios.setVisible(true);
 
 	}
+	
+	public void abrirBorrarPrestamo() {
+		
+		this.borrarPrestamo.setVisible(true);
+		
+	}
+	
+	public void abrirListarPrestamos() {
+		
+		this.listarPrestamos.setVisible(true);
+		
+	}
 
 	public ModeloSocio getModeloSocio() {
 		return modeloSocio;
@@ -125,4 +152,18 @@ public class ControladorPrestamo {
 		modeloPrestamo.prestar(libro, socio);
 
 	}
+
+	public BorrarPrestamo getBorrarPrestamo() {
+		return borrarPrestamo;
+	}
+
+	public void setBorrarPrestamo(BorrarPrestamo borrarPrestamo) {
+		this.borrarPrestamo = borrarPrestamo;
+	}
+
+
+
+
+
+	
 }

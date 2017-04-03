@@ -79,11 +79,19 @@ public class Main {
 
 		FormularioPrestamo formularioPrestamo = new FormularioPrestamo(gestionPrestamo, true);
 		formularioPrestamo.setControladorPrestamo(controladorPrestamo);
+		
+		BorrarPrestamo borrarPrestamo = new BorrarPrestamo(gestionPrestamo, true);
+		borrarPrestamo.setControladorPrestamo(controladorPrestamo);
+		
+		ListarPrestamos listarPrestamos = new ListarPrestamos(gestionPrestamo, true);
+		listarPrestamos.setControladorPrestamo(controladorPrestamo);
 
 		controladorPrestamo.setFormularioPrestamo(formularioPrestamo);
 		controladorPrestamo.setModeloLibro(modeloLibro);
 		controladorPrestamo.setModeloSocio(modeloSocio);
 		controladorPrestamo.setModeloPrestamo(modeloPrestamo);
+		controladorPrestamo.setBorrarPrestamo(borrarPrestamo);
+		controladorPrestamo.setListarPrestamos(listarPrestamos);
 
 		// rellenar controladorSocio
 		controladorSocio.setModeloSocio(modeloSocio);
@@ -92,6 +100,7 @@ public class Main {
 		controladorSocio.setFormularioSocio(formularioSocio);
 		controladorSocio.setFormDeModificado(formularioDeModificado);
 		controladorSocio.setFormTodosSocios(formularioTodosSocios);
+		
 
 		// prueba de formulario de busqueda
 		controladorSocio.setFormularioBusquedaSocio(formularioDeBusqueda);
@@ -99,6 +108,7 @@ public class Main {
 		// rellenar controladorPrestamo
 		controladorPrestamo.setModeloPrestamo(modeloPrestamo);
 		controladorPrestamo.setGestorPrestamo(gestionPrestamo);
+		
 
 		// abrir la ventana principal
 		principal.setVisible(true);
