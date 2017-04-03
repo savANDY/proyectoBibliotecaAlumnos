@@ -59,6 +59,8 @@ public class Prestamo {
 		this.libro = libro;
 	}
 
+	
+	
 	public Prestamo(int id_libro, int id_socio, Date fecha, boolean devuelto) {
 		super();
 		this.id_libro = id_libro;

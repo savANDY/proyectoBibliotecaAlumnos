@@ -77,8 +77,10 @@ public class Principal extends JFrame {
 		JButton prestamos = new JButton("PRESTAMOS");
 		prestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				controladorPrestamo.listarTodosPrestamos();
 				controladorPrestamo.abrirGestionPrestamo();
+				
 
 			}
 		});

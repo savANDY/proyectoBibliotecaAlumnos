@@ -2,10 +2,13 @@ package controlador;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.Libro;
 import modelo.ModeloLibro;
 import modelo.ModeloPrestamo;
 import modelo.ModeloSocio;
+import modelo.Prestamo;
 import modelo.Socio;
 import vista.*;
 import vista.prestamo.FormularioPrestamo;
@@ -67,6 +70,7 @@ public class ControladorPrestamo {
 
 	public void abrirGestionPrestamo() {
 		this.gestionPrestamo.setVisible(true);
+
 	}
 
 	public void abrirFormularioPrestamo() {
@@ -80,6 +84,23 @@ public class ControladorPrestamo {
 		this.formularioPrestamo.rellenarComboLibros(libros);
 
 		this.formularioPrestamo.setVisible(true);
+
+	}
+
+	public void listarTodosPrestamos() {
+
+		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+
+		try {
+			prestamos = modeloPrestamo.seleccionarTodos();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(gestionPrestamo, "Error al seleccionar todos los prestammos!");
+			// e.printStackTrace();
+		}
+
+		gestionPrestamo.rellenarTabla(prestamos);
+
+		// formTodosSocios.setVisible(true);
 
 	}
 
