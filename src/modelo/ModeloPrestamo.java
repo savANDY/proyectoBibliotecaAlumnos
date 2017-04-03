@@ -163,6 +163,8 @@ public class ModeloPrestamo extends Conectar {
 			throw e;
 		}
 	}
+	
+	//SELECT titulo FROM libros L WHERE id NOT IN
 
 	public void prestar(int libro, int socio) throws Exception {
 
