@@ -39,6 +39,7 @@ public class GestionPrestamo extends JDialog {
 	private ControladorPrestamo controladorPrestamo;
 	private FormularioPrestamo formulacionPrestamo;
 	private JTable tabla;
+	private JTextPane txtpnMensajesVentana;
 
 	public ControladorPrestamo getControladorPrestamo() {
 		return controladorPrestamo;
@@ -53,6 +54,7 @@ public class GestionPrestamo extends JDialog {
 	 */
 	public GestionPrestamo(JFrame principal, boolean modal) {
 		super(principal, true);
+		setTitle("Gestion de prestamos");
 		setBounds(100, 100, 500, 500);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -100,6 +102,20 @@ public class GestionPrestamo extends JDialog {
 				});
 				
 				JButton btnLibroDevuelto = new JButton("Libro devuelto");
+				btnLibroDevuelto.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						if (!tabla.getSelectionModel().isSelectionEmpty()){
+							
+						String tituloLibro = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+						tabla.setValueAt("Si",tabla.getSelectedRow(), 3);
+						
+						txtpnMensajesVentana.setText("¡Hecho, libro " + tituloLibro + " devuelto!");
+						
+						System.out.println(tituloLibro);
+						}
+					}
+				});
 				
 				JButton btnListarPrestamos = new JButton("Listar Prestamos");
 				btnListarPrestamos.addActionListener(new ActionListener() {
@@ -146,16 +162,9 @@ public class GestionPrestamo extends JDialog {
 				);
 				panel_1.setLayout(gl_panel_1);
 				
-				JScrollPane scrollPane = new JScrollPane();
-				scrollPane.setBounds(10, 11, 463, 140);
-				contentPanel.add(scrollPane);
-
-				tabla = new JTable();
-				scrollPane.setViewportView(tabla);
 				
 				
-				
-				JTextPane txtpnMensajesVentana = new JTextPane();
+				txtpnMensajesVentana = new JTextPane();
 				
 				SimpleAttributeSet attribs = new SimpleAttributeSet();  
 				StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);  
@@ -168,6 +177,19 @@ public class GestionPrestamo extends JDialog {
 				txtpnMensajesVentana.setBounds(10, 160, 463, 20);
 				
 				contentPanel.add(txtpnMensajesVentana);
+				
+				JPanel panel_2 = new JPanel();
+				panel_2.setBorder(new TitledBorder(null, "Historial de prestamos", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(102, 153, 153)));
+				panel_2.setBounds(10, 11, 464, 140);
+				contentPanel.add(panel_2);
+				panel_2.setLayout(null);
+				
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBounds(10, 21, 444, 108);
+				panel_2.add(scrollPane);
+				
+								tabla = new JTable();
+								scrollPane.setViewportView(tabla);
 				
 				
 				btnNewButton.addActionListener(new ActionListener() {
@@ -182,7 +204,8 @@ public class GestionPrestamo extends JDialog {
 	public void rellenarTabla(ArrayList<Prestamo> prestamos) {
 
 		DefaultTableModel dtm = new DefaultTableModel();
-		String[] cabeceras = { "LIBRO", "SOCIO", "FECHA" };
+		
+		String[] cabeceras = { "LIBRO", "SOCIO", "FECHA", "DEVUELTO" };
 		dtm.setColumnIdentifiers(cabeceras);
 		
 		String devuelto = null;
@@ -195,7 +218,10 @@ public class GestionPrestamo extends JDialog {
 				devuelto = "No";
 			}
 			
-			String[] fila = { String.valueOf(prestamo.getId_libro()), String.valueOf(prestamo.getId_socio()), prestamo.getFecha().toString(), devuelto };
+			String libro = controladorPrestamo.seleccionarTituloPorId(prestamo.getId_libro());
+			String socio = controladorPrestamo.seleccionarSocioPorId(prestamo.getId_socio());
+			
+			String[] fila = { libro, socio, prestamo.getFecha().toString(), devuelto };
 
 
 			dtm.addRow(fila);

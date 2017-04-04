@@ -114,7 +114,7 @@ public class ModeloLibro extends Conectar {
 
 	}
 
-	public String seleccionarId(int id_libro) throws Exception {
+	public String seleccionarPorId(int id_libro) throws Exception {
 
 		PreparedStatement pst;
 		String titulo = "";
@@ -290,4 +290,5 @@ public class ModeloLibro extends Conectar {
 
 		}
 	}
+
 }

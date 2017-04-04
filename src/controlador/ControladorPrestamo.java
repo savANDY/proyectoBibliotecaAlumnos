@@ -66,7 +66,6 @@ public class ControladorPrestamo {
 	public void setFormularioPrestamo(FormularioPrestamo formularioPrestamo) {
 		this.formularioPrestamo = formularioPrestamo;
 	}
-	
 
 	public ListarPrestamos getListarPrestamos() {
 		return listarPrestamos;
@@ -76,7 +75,6 @@ public class ControladorPrestamo {
 		this.listarPrestamos = listarPrestamos;
 	}
 
-	
 	// Constructor
 	public ControladorPrestamo() {
 		super();
@@ -118,17 +116,17 @@ public class ControladorPrestamo {
 		// formTodosSocios.setVisible(true);
 
 	}
-	
+
 	public void abrirBorrarPrestamo() {
-		
+
 		this.borrarPrestamo.setVisible(true);
-		
+
 	}
-	
+
 	public void abrirListarPrestamos() {
-		
+
 		this.listarPrestamos.setVisible(true);
-		
+
 	}
 
 	public ModeloSocio getModeloSocio() {
@@ -161,9 +159,32 @@ public class ControladorPrestamo {
 		this.borrarPrestamo = borrarPrestamo;
 	}
 
+	public String seleccionarTituloPorId(int id) {
 
+		String titulo = null;
 
+		try {
+			titulo = modeloLibro.seleccionarPorId(id);
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(gestionPrestamo, "Error al seleccionar titulo de libro");
+			// e.printStackTrace();
+		}
 
+		return titulo;
+	}
 
-	
+	public String seleccionarSocioPorId(int id_socio) {
+		
+		String nombreSocio = null;
+
+		try {
+			nombreSocio = modeloSocio.seleccionarPorId(id_socio);
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(gestionPrestamo, "Error al seleccionar nombre de socio");
+			// e.printStackTrace();
+		}
+
+		return nombreSocio;
+	}
+
 }

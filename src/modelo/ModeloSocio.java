@@ -124,7 +124,7 @@ public class ModeloSocio extends Conectar {
 		}
 	}
 
-	public String seleccionarId(int id) throws Exception {
+	public String seleccionarPorId(int id) throws Exception {
 		try {
 
 			PreparedStatement pst = cn.prepareStatement("SELECT NOMBRE,APELLIDO FROM socios WHERE id = ?");
