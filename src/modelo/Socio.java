@@ -12,7 +12,7 @@ public class Socio {
 	private String provincia;
 	private String dni;
 
-	private ArrayList<Prestamo> prestamos;
+	private ArrayList<Prestamo> prestamos; // relacion 1:N de la BD
 
 	public Socio() {
 

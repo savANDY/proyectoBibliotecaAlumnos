@@ -8,8 +8,9 @@ public class Prestamo {
 	private int id_socio;
 	private Date fecha;
 	private boolean devuelto;
-	private Socio socio;
-	private Libro libro;
+	
+	private Socio socio;  // relacion N:1 de la BD
+	private Libro libro;  // relacion N:1 de la BD
 
 	public int getId_libro() {
 		return id_libro;

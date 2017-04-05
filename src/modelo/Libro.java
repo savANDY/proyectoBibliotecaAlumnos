@@ -8,7 +8,7 @@ public class Libro {
 	private String titulo;
 	private String autor;
 	private int num_pag;
-	private ArrayList<Prestamo> prestamos;
+	private ArrayList<Prestamo> prestamos; // relacion 1:N de la BD
 
 	public int getId() {
 		return id;
