@@ -117,11 +117,11 @@ public class GestionPrestamo extends JDialog {
 					}
 				});
 				
-				JButton btnListarPrestamos = new JButton("Listar Prestamos");
+				JButton btnListarPrestamos = new JButton("Listar Por Socio");
 				btnListarPrestamos.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-						controladorPrestamo.abrirListarPrestamos();
+						controladorPrestamo.abrirListarPorSocio();
 						
 					}
 				});
