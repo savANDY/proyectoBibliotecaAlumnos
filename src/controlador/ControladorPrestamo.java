@@ -14,7 +14,7 @@ import vista.*;
 import vista.prestamo.BorrarPrestamo;
 import vista.prestamo.FormularioPrestamo;
 import vista.prestamo.GestionPrestamo;
-import vista.prestamo.ListarPrestamos;
+import vista.prestamo.ListarPorSocio;
 
 public class ControladorPrestamo {
 
@@ -25,7 +25,7 @@ public class ControladorPrestamo {
 	private ModeloLibro modeloLibro;
 	private ModeloPrestamo modeloPrestamo;
 	private BorrarPrestamo borrarPrestamo;
-	private ListarPrestamos listarPrestamos;
+	private ListarPorSocio listarPrestamos;
 
 	public GestionPrestamo getGestorPrestamo() {
 		return gestionPrestamo;
@@ -67,11 +67,11 @@ public class ControladorPrestamo {
 		this.formularioPrestamo = formularioPrestamo;
 	}
 
-	public ListarPrestamos getListarPrestamos() {
+	public ListarPorSocio getListarPrestamos() {
 		return listarPrestamos;
 	}
 
-	public void setListarPrestamos(ListarPrestamos listarPrestamos) {
+	public void setListarPrestamos(ListarPorSocio listarPrestamos) {
 		this.listarPrestamos = listarPrestamos;
 	}
 

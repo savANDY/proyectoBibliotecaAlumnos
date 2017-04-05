@@ -83,7 +83,7 @@ public class Main {
 		BorrarPrestamo borrarPrestamo = new BorrarPrestamo(gestionPrestamo, true);
 		borrarPrestamo.setControladorPrestamo(controladorPrestamo);
 		
-		ListarPrestamos listarPrestamos = new ListarPrestamos(gestionPrestamo, true);
+		ListarPorSocio listarPrestamos = new ListarPorSocio(gestionPrestamo, true);
 		listarPrestamos.setControladorPrestamo(controladorPrestamo);
 
 		controladorPrestamo.setFormularioPrestamo(formularioPrestamo);
